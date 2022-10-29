@@ -9,7 +9,10 @@ import Foundation
 import SwiftUI
 
 var numOfCoins = Double ()
-var encouragement = String ()
+struct Encouragement {
+    var setup: String 
+    var words: String
+}
 
 struct vlkyvar: View {
     var body: some View {

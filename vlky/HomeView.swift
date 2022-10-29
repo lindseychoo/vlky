@@ -8,10 +8,56 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    let encouragements = [
+        Encouragement(setup: "", words: "keep going"), Encouragement(setup: "", words: "you're doing well"),
+        Encouragement(setup: "", words: "good job")
+    ]
+    
+    @State var showEncouragement = false
+    @State var currentEncouragement = 0
+    
     var body: some View {
-        Text("This is home view")
+        VStack {
+            HStack {
+                Text("Welcome")
+                    .font(.system(size: 35))
+                    .padding()
+                Text("V\(numOfCoins)")
+                    .font(.system(size: 35))
+            }
+            VStack {
+                Text(encouragements[0].setup)
+                Button {
+                    showEncouragement = true
+                } label: {
+                    Text("press me")
+                        .padding()
+                        .background(.yellow)
+                        .foregroundColor(.white)
+                }
+                .padding()
+                
+                if showEncouragement {
+                    Text(encouragements[0].words)
+                        .padding()
+                }
+            }
+            Image("mascot")
+                .resizable()
+                .mask(Circle())
+                .padding()
+            
+            Text (" Valkey ")
+                .font(.system(size: 35))
+                .padding()
+                .background(.blue)
+                .foregroundColor(.white)
+                .cornerRadius(20)
+        }
+        }
+        
     }
-}
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
