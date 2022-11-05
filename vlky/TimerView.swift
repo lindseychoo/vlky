@@ -20,10 +20,18 @@ struct TimerView: View {
     @State private var lapTimings: [LapClass] = []
     
     var body: some View {
+        
         NavigationView {
             VStack {
                 Text(String(format: "%.2f", managerClass.secondElapse))
                     .font(.largeTitle)
+                    .padding()
+                    .padding()
+                
+                Image("mascot")
+                    .resizable()
+                    .mask(Circle())
+                    .scaledToFit()
                 
                 switch managerClass.mode {
                     
