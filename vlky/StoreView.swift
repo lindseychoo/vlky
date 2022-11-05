@@ -9,7 +9,11 @@ import SwiftUI
 
 struct StoreView: View {
     var body: some View {
-        Text("this is store view")
+        HStack{
+            Image(systemName:"dollarsign.circle.fill")
+            Text("\(numOfCoins)")
+        }
+        padding()
     }
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-var numOfCoins = Double ()
+var numOfCoins = Int()
 struct Encouragement {
     var setup: String 
     var words: String
