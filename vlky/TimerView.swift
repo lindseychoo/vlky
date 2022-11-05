@@ -20,6 +20,9 @@ struct TimerView: View {
     @State private var lapTimings: [LapClass] = []
     
     var body: some View {
+        if managerClass.secondElapse == 10{
+     
+        }
         
         NavigationView {
             VStack {
@@ -175,7 +178,6 @@ class ManagerClass:ObservableObject {
         mode = .paused
     }
 }
-
 
 struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
