@@ -1,0 +1,41 @@
+//
+//  NewTodoView.swift
+//  vlky
+//
+//  Created by T Krobot on 12/11/22.
+//
+
+import SwiftUI
+
+struct NewTodoView: View {
+    @State var todoName = ""
+    @State var todoDesc = ""
+    @Binding var todos: [Todo]
+    @Environment(\.presentationMode) var presentationMode
+    
+    
+    var body: some View {
+        Form{
+            Section{
+                TextField("Task Name", text: $todoName)
+                TextField("Description", text: $todoDesc)
+                Button{
+                    print("hi")
+                    todos.append(Todo(title: todoName, description: todoDesc))
+                    presentationMode.wrappedValue.dismiss()
+                } label: {
+                    Text("Save todo")
+                }
+            }header: {
+                Text("New Task")
+                    .bold()
+            }
+        }
+    }
+}
+
+struct NewTodoView_Previews: PreviewProvider {
+    static var previews: some View {
+        NewTodoView(todos: .constant([]))
+    }
+}

@@ -64,7 +64,6 @@ struct HomeView: View {
                             .padding()
                     }
                     
-                    Text("click here for more")
                 }
             }
             }

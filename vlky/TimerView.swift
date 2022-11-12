@@ -123,6 +123,7 @@ struct TimerView: View {
                                     .background(Color.blue)
                                     .cornerRadius(100)
                             })
+                            
                         }
                         withAnimation{
                             Button(action: {
