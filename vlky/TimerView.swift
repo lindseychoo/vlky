@@ -22,10 +22,21 @@ struct TimerView: View {
     @State private var lapTimings: [LapClass] = []
     
     var body: some View {
+        if managerClass.secondElapse == 10{
+     
+        }
+        
         NavigationView {
             VStack {
                 Text(String(format: "%.2f", managerClass.secondElapse))
                     .font(.largeTitle)
+                    .padding()
+                    .padding()
+                
+                Image("mascot")
+                    .resizable()
+                    .mask(Circle())
+                    .scaledToFit()
                 
                 switch managerClass.mode {
                     
@@ -169,7 +180,6 @@ class ManagerClass:ObservableObject {
         mode = .paused
     }
 }
-
 
 struct TimerView_Previews: PreviewProvider {
     static var previews: some View {

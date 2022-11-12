@@ -25,39 +25,54 @@ struct HomeView: View {
                     .padding()
                 Text("V\(numOfCoins)")
                     .font(.system(size: 35))
-            }
-            VStack {
-                Text(encouragements[0].setup)
-                Button {
-                    showEncouragement = true
-                } label: {
-                    Text("press me")
-                        .padding()
-                        .background(.yellow)
-                        .foregroundColor(.white)
-                }
-                .padding()
                 
-                if showEncouragement {
-                    Text(encouragements[0].words)
-                        .padding()
-                }
             }
             Image("mascot")
                 .resizable()
                 .mask(Circle())
                 .padding()
-            
             Text (" Valkey ")
                 .font(.system(size: 35))
                 .padding()
                 .background(.blue)
                 .foregroundColor(.white)
                 .cornerRadius(20)
+               
+            ZStack {
+                Color(.systemBackground)
+                .onTapGesture{
+                    if showEncouragement {
+                        currentEncouragement += 1
+                        showEncouragement = false
+                    }
+                }
+                VStack {
+                    Text(encouragements[currentEncouragement % encouragements.count].setup)
+                    
+                    Button {
+                        showEncouragement = true
+                    } label: {
+                        Text("press me")
+                            .padding()
+                            .background(.yellow)
+                            .foregroundColor(.white)
+                    }
+                    .padding()
+                    
+                    if showEncouragement {
+                        Text(encouragements [currentEncouragement % encouragements.count].words)
+                            .padding()
+                    }
+                    
+                    Text("click here for more")
+                }
+            }
+            }
+           
+            
         }
         }
         
-    }
 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
