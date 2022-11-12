@@ -16,6 +16,7 @@
 		7E91B3E529038800003A33E8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E91B3E429038800003A33E8 /* ContentView.swift */; };
 		7E91B3E729038804003A33E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E91B3E629038804003A33E8 /* Assets.xcassets */; };
 		7E91B3EA29038804003A33E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E91B3E929038804003A33E8 /* Preview Assets.xcassets */; };
+		D908397D291F36C700825FBD /* storeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D908397C291F36C700825FBD /* storeItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		7E91B3E429038800003A33E8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		7E91B3E629038804003A33E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7E91B3E929038804003A33E8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D908397C291F36C700825FBD /* storeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = storeItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 				7E7BD23F2903937C0002F5B9 /* TimerView.swift */,
 				7E7BD241290393BB0002F5B9 /* TodoView.swift */,
 				7E7BD243290393D70002F5B9 /* StoreView.swift */,
+				D908397C291F36C700825FBD /* storeItem.swift */,
 				7E7BD23B290392580002F5B9 /* vlkyvar.swift */,
 				7E91B3E629038804003A33E8 /* Assets.xcassets */,
 				7E91B3E829038804003A33E8 /* Preview Content */,
@@ -158,6 +161,7 @@
 				7E7BD23E290393580002F5B9 /* HomeView.swift in Sources */,
 				7E7BD23C290392580002F5B9 /* vlkyvar.swift in Sources */,
 				7E7BD244290393D70002F5B9 /* StoreView.swift in Sources */,
+				D908397D291F36C700825FBD /* storeItem.swift in Sources */,
 				7E91B3E329038800003A33E8 /* vlkyApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

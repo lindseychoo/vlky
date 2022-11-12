@@ -8,12 +8,21 @@
 import SwiftUI
 
 struct StoreView: View {
+    
+    var items = [storeItem(itemName: "Chest 1", imageName: ""), storeItem(itemName: "Chest 2", imageName: "")]
+    let columns = [GridItem(.adaptive(minimum: 100))]
     var body: some View {
-        HStack{
-            Image(systemName:"dollarsign.circle.fill")
-            Text("\(numOfCoins)")
+        LazyVGrid(columns: columns) {
+            ForEach(items) { item in
+                Text(item.itemName)
+                    .font(.system(size: 30))
+                    .padding(20)
+                    .background(.cyan)
+                    .cornerRadius(10)
+                Image(item.imageName)
+            }
         }
-        padding()
+        .padding()
     }
 }
 
@@ -22,3 +31,4 @@ struct StoreView_Previews: PreviewProvider {
         StoreView()
     }
 }
+

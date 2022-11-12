@@ -16,6 +16,8 @@ struct LapClass:Identifiable {
 }
 struct TimerView: View {
     
+    
+    
     @ObservedObject var managerClass = ManagerClass()
     @State private var lapTimings: [LapClass] = []
     

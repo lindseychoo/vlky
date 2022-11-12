@@ -12,19 +12,20 @@ struct ContentView: View {
         TabView {
             HomeView()
                 .tabItem {
-            Label("Home", systemImage: "house")
-        }
+                    Label("Home", systemImage: "house")
+                }
             TimerView()
                 .tabItem {
-            Label("Timer", systemImage: "timer")
-        }
+                    Label("Timer", systemImage: "timer")
+                }
             StoreView()
                 .tabItem {
-            Label("Store", systemImage: "bag")
-        }
+                    Label("Store", systemImage: "bag")
+                }
             TodoView()
                 .tabItem {
-            Label("Todo", systemImage: "list.bullet")
+                    Label("Todo", systemImage: "list.bullet")
+                }
         }
     }
 }
@@ -34,4 +35,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
-}
+
