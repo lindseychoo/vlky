@@ -16,42 +16,42 @@ struct LapClass:Identifiable {
 }
 struct TimerView: View {
     
-    
-    
+    @Binding var numOfCoins: Int
     @ObservedObject var managerClass = ManagerClass()
     @State private var lapTimings: [LapClass] = []
     
     var body: some View {
-        if managerClass.secondElapse == 10{
-     
-        }
-        
-        
-        
         NavigationView {
+            
             ZStack{
-                
-                
-                if managerClass.secondElapse <= 120.0 {
-                    Image("TimerfirstWallpaper")
-                        .resizable()
-                        .scaledToFit()
-                        .aspectRatio(contentMode: .fill)
-                        .edgesIgnoringSafeArea(.top)
-                } else {
-                  Image("TimerSecondWallpaper")
-                        .resizable()
-                        .scaledToFit()
-                        .aspectRatio(contentMode: .fill)
-                        .edgesIgnoringSafeArea(.top)
+                ZStack {
+                    if managerClass.secondElapse <= 120.0 {
+                        Image("TimerfirstWallpaper")
+                            .resizable()
+                            .scaledToFit()
+                            .aspectRatio(contentMode: .fill)
+                            .edgesIgnoringSafeArea(.top)
+                    } else {
+                        Image("TimerSecondWallpaper")
+                            .resizable()
+                            .scaledToFit()
+                            .aspectRatio(contentMode: .fill)
+                            .edgesIgnoringSafeArea(.top)
+                    }
                 }
+                .clipped()
+                .edgesIgnoringSafeArea(.top)
                 
                 VStack {
+                    Spacer(minLength: 100)
+                    
                     Text(String(format: "%.2f", managerClass.secondElapse))
                         .font(.largeTitle)
                         .padding()
-       
                         
+                    
+                    Text("\(numOfCoins)")
+                        .font(.largeTitle)
                     
                     Image("mascot")
                         .resizable()
@@ -163,14 +163,18 @@ struct TimerView: View {
                     List(lapTimings) { lap in
                         Text("\(String(format: "%.2f", lap.lap)) s")
                     }
-                    
                 }
                 .navigationTitle("Stop Watch")
-                .offset(x:0, y:90)
+                .onChange(of: managerClass.secondElapse) { _ in
+                    if Int(managerClass.secondElapse * 10) % 100 == 0 {
+                        numOfCoins += 1
+                        print(numOfCoins)
+                    }
+                }
+                
             }
-            
-            
         }
+        
         
     }
 }
@@ -189,7 +193,9 @@ class ManagerClass:ObservableObject {
     func start() {
         mode = .running
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-            self.secondElapse += 0.1
+             self.secondElapse += 0.1
+                
+            
         }
     }
     
@@ -207,6 +213,6 @@ class ManagerClass:ObservableObject {
 
 struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
-        TimerView()
+        TimerView(numOfCoins: .constant(1))
     }
 }

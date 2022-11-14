@@ -8,13 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var numOfCoins: Int = 0
     var body: some View {
         TabView {
             HomeView()
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-            TimerView()
+            TimerView(numOfCoins: $numOfCoins)
                 .tabItem {
                     Label("Timer", systemImage: "timer")
                 }
