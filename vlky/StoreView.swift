@@ -16,14 +16,19 @@ struct StoreView: View {
         
         LazyVGrid(columns: columns) {
             ForEach(items) { item in
-                VStack {
-                    Image(item.imageName)
-                    Text(item.itemName)
-                        .font(.system(size: 30))
+                Button {
+                    
+                } label: {
+                    VStack {
+                        Image(item.imageName)
+                        Text(item.itemName)
+                            .font(.system(size: 30))
+                            .foregroundColor(.white)
+                    }
+                    .padding(20)
+                    .background(.cyan)
+                    .cornerRadius(10)
                 }
-                .padding(20)
-                .background(.cyan)
-                .cornerRadius(10)
             }
         }
         .padding()
