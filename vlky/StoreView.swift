@@ -9,19 +9,21 @@ import SwiftUI
 
 struct StoreView: View {
     
-    var items = [storeItem(itemName: "Chest 1", imageName: ""), storeItem(itemName: "Chest 2", imageName: "")]
-    let columns = [GridItem(.adaptive(minimum: 100))]
+    var items = [storeItem(itemName: "Chest 1", imageName: "chest1"), storeItem(itemName: "Chest 2", imageName: "chest2"), storeItem(itemName: "Chest 3", imageName: "chest3"), storeItem(itemName: "Chest 4", imageName: "chest4")]
+    let columns = [GridItem(.adaptive(minimum: 160))]
     
     var body: some View {
         
         LazyVGrid(columns: columns) {
             ForEach(items) { item in
-                Text(item.itemName)
-                    .font(.system(size: 30))
-                    .padding(20)
-                    .background(.cyan)
-                    .cornerRadius(10)
-                Image(item.imageName)
+                VStack {
+                    Image(item.imageName)
+                    Text(item.itemName)
+                        .font(.system(size: 30))
+                }
+                .padding(20)
+                .background(.cyan)
+                .cornerRadius(10)
             }
         }
         .padding()
