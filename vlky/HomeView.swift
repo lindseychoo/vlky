@@ -29,6 +29,7 @@ struct HomeView: View {
             }
             Image("mascot")
                 .resizable()
+                .scaledToFit()
                 .mask(Circle())
                 .padding()
             Text (" Valkey ")
@@ -40,6 +41,7 @@ struct HomeView: View {
                
             ZStack {
                 Color(.systemBackground)
+                    .frame(maxHeight: 200)
                 .onTapGesture{
                     if showEncouragement {
                         currentEncouragement += 1

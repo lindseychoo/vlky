@@ -26,95 +26,44 @@ struct TimerView: View {
      
         }
         
+        
+        
         NavigationView {
-            VStack {
-                Text(String(format: "%.2f", managerClass.secondElapse))
-                    .font(.largeTitle)
-                    .padding()
-                    .padding()
+            ZStack{
                 
-                Image("mascot")
-                    .resizable()
-                    .mask(Circle())
-                    .scaledToFit()
                 
-                switch managerClass.mode {
+                if managerClass.secondElapse <= 120.0 {
+                    Image("TimerfirstWallpaper")
+                        .resizable()
+                        .scaledToFit()
+                        .aspectRatio(contentMode: .fill)
+                        .edgesIgnoringSafeArea(.top)
+                } else {
+                  Image("TimerSecondWallpaper")
+                        .resizable()
+                        .scaledToFit()
+                        .aspectRatio(contentMode: .fill)
+                        .edgesIgnoringSafeArea(.top)
+                }
+                
+                VStack {
+                    Text(String(format: "%.2f", managerClass.secondElapse))
+                        .font(.largeTitle)
+                        .padding()
+       
+                        
                     
-                case .stopped:
-                    withAnimation{
-                        Button(action: {
-                            managerClass.start()
-                        }, label: {
-                            Image(systemName: "play.fill")
-                                .foregroundColor(.white)
-                                .font(.title)
-                                .padding()
-                                .background(Color.blue)
-                                .cornerRadius(100)
-                        })
-                    }
+                    Image("mascot")
+                        .resizable()
+                        .mask(Circle())
+                        .scaledToFit()
                     
-                case .running:
-                    HStack{
-                        withAnimation{
-                            Button(action: {
-                                managerClass.stop()
-                                lapTimings = []
-                            }, label: {
-                                Image(systemName: "stop.fill")
-                                    .foregroundColor(.white)
-                                    .font(.title)
-                                    .padding()
-                                    .background(Color.red)
-                                    .cornerRadius(100)
-                            })
-                        }
-                        withAnimation{
-                            Button(action: {
-                                let newLap = LapClass(managerClass.secondElapse)
-                                lapTimings.append(newLap)
-                            }, label: {
-                                Image(systemName: "stopwatch.fill")
-                                    .foregroundColor(.white)
-                                    .font(.title)
-                                    .padding()
-                                    .background(Color.green)
-                                    .cornerRadius(100)
-                            })
-                        }
-                        withAnimation{
-                            Button(action: {
-                                managerClass.pause()
-                            }, label: {
-                                Image(systemName: "pause.fill")
-                                    .foregroundColor(.white)
-                                    .font(.title)
-                                    .padding()
-                                    .background(Color.orange)
-                                    .cornerRadius(100)
-                            })
-                        }
-                    }
-                    
-                case .paused:
-                    HStack {
-                        withAnimation{
-                            Button(action: {
-                                managerClass.stop()
-                                lapTimings = []
-                            }, label: {
-                                Image(systemName: "stop.fill")
-                                    .foregroundColor(.white)
-                                    .font(.title)
-                                    .padding()
-                                    .background(Color.red)
-                                    .cornerRadius(100)
-                            })
-                        }
+                    switch managerClass.mode {
+                        
+                    case .stopped:
                         withAnimation{
                             Button(action: {
                                 managerClass.start()
-                                lapTimings = []
                             }, label: {
                                 Image(systemName: "play.fill")
                                     .foregroundColor(.white)
@@ -123,29 +72,103 @@ struct TimerView: View {
                                     .background(Color.blue)
                                     .cornerRadius(100)
                             })
-                            
                         }
-                        withAnimation{
-                            Button(action: {
-                                managerClass.pause()
-                            }, label: {
-                                Image(systemName: "pause.fill")
-                                    .foregroundColor(.white)
-                                    .font(.title)
-                                    .padding()
-                                    .background(Color.orange)
-                                    .cornerRadius(100)
-                            })
+                        
+                    case .running:
+                        HStack{
+                            withAnimation{
+                                Button(action: {
+                                    managerClass.stop()
+                                    lapTimings = []
+                                }, label: {
+                                    Image(systemName: "stop.fill")
+                                        .foregroundColor(.white)
+                                        .font(.title)
+                                        .padding()
+                                        .background(Color.red)
+                                        .cornerRadius(100)
+                                })
+                            }
+                            withAnimation{
+                                Button(action: {
+                                    let newLap = LapClass(managerClass.secondElapse)
+                                    lapTimings.append(newLap)
+                                }, label: {
+                                    Image(systemName: "stopwatch.fill")
+                                        .foregroundColor(.white)
+                                        .font(.title)
+                                        .padding()
+                                        .background(Color.green)
+                                        .cornerRadius(100)
+                                })
+                            }
+                            withAnimation{
+                                Button(action: {
+                                    managerClass.pause()
+                                }, label: {
+                                    Image(systemName: "pause.fill")
+                                        .foregroundColor(.white)
+                                        .font(.title)
+                                        .padding()
+                                        .background(Color.orange)
+                                        .cornerRadius(100)
+                                })
+                            }
+                        }
+                        
+                    case .paused:
+                        HStack {
+                            withAnimation{
+                                Button(action: {
+                                    managerClass.stop()
+                                    lapTimings = []
+                                }, label: {
+                                    Image(systemName: "stop.fill")
+                                        .foregroundColor(.white)
+                                        .font(.title)
+                                        .padding()
+                                        .background(Color.red)
+                                        .cornerRadius(100)
+                                })
+                            }
+                            withAnimation{
+                                Button(action: {
+                                    managerClass.start()
+                                    lapTimings = []
+                                }, label: {
+                                    Image(systemName: "play.fill")
+                                        .foregroundColor(.white)
+                                        .font(.title)
+                                        .padding()
+                                        .background(Color.blue)
+                                        .cornerRadius(100)
+                                })
+                                
+                            }
+                            withAnimation{
+                                Button(action: {
+                                    managerClass.pause()
+                                }, label: {
+                                    Image(systemName: "pause.fill")
+                                        .foregroundColor(.white)
+                                        .font(.title)
+                                        .padding()
+                                        .background(Color.orange)
+                                        .cornerRadius(100)
+                                })
+                            }
                         }
                     }
+                    
+                    List(lapTimings) { lap in
+                        Text("\(String(format: "%.2f", lap.lap)) s")
+                    }
+                    
                 }
-                
-                List(lapTimings) { lap in
-                    Text("\(String(format: "%.2f", lap.lap)) s")
-                }
-                
+                .navigationTitle("Stop Watch")
+                .offset(x:0, y:90)
             }
-            .navigationTitle("Stop Watch")
+            
             
         }
         
