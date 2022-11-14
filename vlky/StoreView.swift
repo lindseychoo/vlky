@@ -17,36 +17,37 @@ struct StoreView: View {
         
         NavigationView {
             VStack{
-                LazyVGrid(columns: columns) {
-                    ForEach(items) { item in
-                        Button {
-                            print("hi")
-                        } label: {
-                            VStack {
-                                Image(item.imageName)
-                                Text(item.itemName)
-                                    .font(.system(size: 30))
-                                    .foregroundColor(.white)
+                Text("Chests")
+                    .font(.title)
+                ScrollView(.horizontal) {
+                    HStack(spacing: 20) {
+                        ForEach(items) { item in
+                            Button {
+                                print("hi")
+                            } label: {
+                                VStack {
+                                    Image(item.imageName)
+                                    Text(item.itemName)
+                                        .font(.system(size: 30))
+                                        .foregroundColor(.white)
+                                }
+                                .padding(20)
+                                .background(.cyan)
+                                .cornerRadius(10)
                             }
-                            .padding(20)
-                            .background(.cyan)
-                            .cornerRadius(10)
                         }
                     }
+                    //.padding()
                 }
-                .padding()
             }.navigationTitle("Store")
-                
             
-
         }
+    }
+    
+}
         
-    }
-}
-
-struct StoreView_Previews: PreviewProvider {
-    static var previews: some View {
-        StoreView()
-    }
-}
-
+        struct StoreView_Previews: PreviewProvider {
+            static var previews: some View {
+                StoreView()
+            }
+        }
