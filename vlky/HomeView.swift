@@ -18,12 +18,15 @@ struct HomeView: View {
     @State var currentEncouragement = 0
     
     var body: some View {
+        
         VStack {
             HStack {
                 Text("Welcome")
                     .font(.system(size: 35))
                     .padding()
-                Text("V\(numOfCoins)")
+                Image(systemName: "dollarsign.circle")
+                    .font(.system(size: 35))
+                Text("\(numOfCoins)")
                     .font(.system(size: 35))
                 
             }
@@ -32,13 +35,7 @@ struct HomeView: View {
                 .scaledToFit()
                 .mask(Circle())
                 .padding()
-            Text (" Valkey ")
-                .font(.system(size: 35))
-                .padding()
-                .background(.blue)
-                .foregroundColor(.white)
-                .cornerRadius(20)
-               
+       
             ZStack {
                 Color(.systemBackground)
                     .frame(maxHeight: 200)
@@ -54,10 +51,12 @@ struct HomeView: View {
                     Button {
                         showEncouragement = true
                     } label: {
-                        Text("press me")
+                        Text (" Valkey ")
+                            .font(.system(size: 35))
                             .padding()
-                            .background(.yellow)
+                            .background(.blue)
                             .foregroundColor(.white)
+                            .cornerRadius(20)
                     }
                     .padding()
                     
