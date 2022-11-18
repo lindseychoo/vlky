@@ -30,6 +30,7 @@ struct TimerView: View {
                             .scaledToFit()
                             .aspectRatio(contentMode: .fill)
                             .edgesIgnoringSafeArea(.top)
+                            .opacity(0.7)
                     } else {
                         Image("TimerSecondWallpaper")
                             .resizable()
