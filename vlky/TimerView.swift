@@ -15,7 +15,6 @@ struct LapClass:Identifiable {
     }
 }
 struct TimerView: View {
-    
     @Binding var numOfCoins: Int
     @ObservedObject var managerClass = ManagerClass()
     @State private var lapTimings: [LapClass] = []
@@ -25,7 +24,7 @@ struct TimerView: View {
             
             ZStack{
                 ZStack {
-                    if managerClass.secondElapse <= 120.0 {
+                    if managerClass.secondElapse <= 10.0 {
                         Image("TimerfirstWallpaper")
                             .resizable()
                             .scaledToFit()
@@ -169,6 +168,7 @@ struct TimerView: View {
                     if Int(managerClass.secondElapse * 10) % 100 == 0 {
                         numOfCoins += 1
                         print(numOfCoins)
+                        
                     }
                 }
                 

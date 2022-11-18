@@ -13,8 +13,7 @@ struct StoreView: View {
     let columns = [GridItem(.adaptive(minimum: 120))]
     
     var body: some View {
-        
-        
+       
         NavigationView {
             VStack{
                 Text("Chests")
@@ -23,7 +22,7 @@ struct StoreView: View {
                     HStack(spacing: 20) {
                         ForEach(items) { item in
                             Button {
-                                print("hi")
+                            
                             } label: {
                                 VStack {
                                     Image(item.imageName)

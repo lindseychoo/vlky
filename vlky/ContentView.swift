@@ -23,7 +23,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Store", systemImage: "bag")
                 }
-            TodoView()
+            TodoView(numOfCoins: $numOfCoins)
                 .tabItem {
                     Label("Todo", systemImage: "list.bullet")
                 }
