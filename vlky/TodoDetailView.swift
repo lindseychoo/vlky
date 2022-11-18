@@ -34,10 +34,10 @@ struct TodoDetailView: View {
                 Text(todo.isCompleted ? "Mark as Incomplete" : "Mark as complete")
                     .foregroundColor(.white)
                     .padding()
-                    .background(.mint)
+                    .background(.blue)
                     .cornerRadius(10)
             }
-            Text(todo.isCompleted ? "Task done" : "Task not done")
+            Text(todo.isCompleted ? "Done" : "Not done")
                 .foregroundColor(todo.isCompleted ? .blue : .red)
             
         }

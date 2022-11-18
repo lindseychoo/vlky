@@ -17,10 +17,7 @@ struct TodoView: View {
     @State var sheetShown = false
     
     var body: some View {
-        
-        circular_progress_view(progress: progress)
-                      .frame(width: 150, height: 150)
-     
+
         NavigationView {
             List{
                 Text("Completed: \(numTaskCompleted)")
@@ -34,6 +31,9 @@ struct TodoView: View {
                         VStack{
                             HStack{
                                 Image(systemName: todo.isCompleted ? "checkmark.circle.fill" : "circle")
+                                    .onTapGesture {
+                                        todo.isDone.toggle()
+                                    }
                                 Text(todo.title)
                                     .strikethrough(todo.isCompleted)
                                     .foregroundColor(todo.isCompleted ? .red : .blue)

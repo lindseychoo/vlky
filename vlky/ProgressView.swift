@@ -8,15 +8,35 @@
 import SwiftUI
 
 struct progress_view: View {
+    @State var progress: Int = 0
+    
     var body: some View {
         NavigationView{
+            
             List{
-                Text("hours studied :")
+                Text("Hours studied :")
                 Text("To-Dos completed :")
                 Text("coins received : \(numOfCoins)")
-                        
+                
+                
+                HStack{
+                    Spacer()
+                    VStack{
+                        Spacer()
+                        Text("Todos done")
+                            .font(.title)
+                        circular_progress_view(progress: progress)
+                            .frame(width: 150, height: 150)
+                    }
+                    .padding()
+                    Spacer()
+                }
+                
             }
             .navigationTitle("Study session")
+            
+            
+            
         }
     }
 }
