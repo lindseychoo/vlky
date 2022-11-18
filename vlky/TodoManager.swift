@@ -17,13 +17,13 @@ class TodoManager: ObservableObject {
     }
     
     var undoneTodos: [Todo] {
-        todoItems.filter { $0.isDone == false}
+        todoItems.filter { $0.isCompleted == false}
     }
     
     let sampleTodoItems: [Todo] =  [
         Todo(title: "Walk the cat", description: ""),
         Todo(title: "Complete AAs", description: ""),
-        Todo(title: "Fix the cabinet", description: "", isDone: true)
+        Todo(title: "Fix the cabinet", isCompleted: true, description: "")
     ]
     
     init() {

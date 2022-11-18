@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct TodoView: View {
-    @State var todos = [Todo(title: "Bring Teddy Home", description: ""), Todo(title: "Complete AAs", description: "Cries"), Todo(title: "Learn cell models", description: "")]
+    @State var todos = [Todo(title: "Bring Teddy Home", isCompleted: true, description: ""), Todo(title: "Complete AAs", isCompleted: true, description: "Cries"), Todo(title: "Learn cell models", isCompleted: false, description: "")]
     
     @Binding var numOfCoins: Int
     @State var progress: Int = 0
@@ -31,13 +31,17 @@ struct TodoView: View {
                         VStack{
                             HStack{
                                 Image(systemName: todo.isCompleted ? "checkmark.circle.fill" : "circle")
-                                    .onTapGesture {
-                                        todo.isDone.toggle()
-                                    }
+//                                    .onTapGesture {
+//                                        todo.isDone.toggle()
+//                                    }
                                 Text(todo.title)
                                     .strikethrough(todo.isCompleted)
                                     .foregroundColor(todo.isCompleted ? .red : .blue)
                             }
+                            .onTapGesture {
+                                todo.isCompleted.toggle()
+                            }
+                            
                             Text(todo.description)
                                 .font(.system(size: 15))
                                 .italic()

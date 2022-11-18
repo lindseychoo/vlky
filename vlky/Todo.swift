@@ -12,5 +12,5 @@ struct Todo: Identifiable, Codable{
     var title: String
     var isCompleted: Bool = false
     var description: String
-    var isDone = false
+//    var isDone = true
 }
