@@ -23,6 +23,7 @@
 		D9626E02291F2F4700516015 /* NewTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9626E01291F2F4700516015 /* NewTodoView.swift */; };
 		D9626E04291F34F800516015 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9626E03291F34F800516015 /* Todo.swift */; };
 		D9626E06291F36EA00516015 /* TodoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9626E05291F36EA00516015 /* TodoDetailView.swift */; };
+		D9D5A358292759BF007C8B68 /* mascotItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D5A357292759BF007C8B68 /* mascotItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		D9626E01291F2F4700516015 /* NewTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTodoView.swift; sourceTree = "<group>"; };
 		D9626E03291F34F800516015 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		D9626E05291F36EA00516015 /* TodoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailView.swift; sourceTree = "<group>"; };
+		D9D5A357292759BF007C8B68 /* mascotItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mascotItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +90,7 @@
 				D9626E01291F2F4700516015 /* NewTodoView.swift */,
 				7E7BD243290393D70002F5B9 /* StoreView.swift */,
 				D908397C291F36C700825FBD /* storeItem.swift */,
+				D9D5A357292759BF007C8B68 /* mascotItem.swift */,
 				7E7BD23B290392580002F5B9 /* vlkyvar.swift */,
 				7E91B3E629038804003A33E8 /* Assets.xcassets */,
 				7E91B3E829038804003A33E8 /* Preview Content */,
@@ -180,6 +183,7 @@
 				D9626E04291F34F800516015 /* Todo.swift in Sources */,
 				D9626E06291F36EA00516015 /* TodoDetailView.swift in Sources */,
 				7EA186F529248F6B0023E8E1 /* ProgressView.swift in Sources */,
+				D9D5A358292759BF007C8B68 /* mascotItem.swift in Sources */,
 				7E7BD23C290392580002F5B9 /* vlkyvar.swift in Sources */,
 				7E09F6AB2924B2630037F8D2 /* CircularProgressView.swift in Sources */,
 				7E7BD244290393D70002F5B9 /* StoreView.swift in Sources */,
