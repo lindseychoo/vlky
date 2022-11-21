@@ -12,8 +12,8 @@ struct progress_view: View {
     
     var body: some View {
         NavigationView{
-            
             List{
+                
                 Text("Hours studied :")
                 Text("To-Dos completed :")
                 Text("coins received : \(numOfCoins)")

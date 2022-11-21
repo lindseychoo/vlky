@@ -11,7 +11,7 @@ import SwiftUI
 struct vlkyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(todoManager: TodoManager())
         }
     }
 }

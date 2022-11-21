@@ -2,102 +2,64 @@
 //  TodoView.swift
 //  vlky
 //
-//  Created by Lindsey Choo on 22/10/22.
+//  Created by T Krobot on 21/11/22.
 //
 
 import SwiftUI
 
 struct TodoView: View {
-    @State var todos = [Todo(title: "Bring Teddy Home", isCompleted: true, description: ""), Todo(title: "Complete AAs", isCompleted: true, description: "Cries"), Todo(title: "Learn cell models", isCompleted: false, description: "")]
     
-    @Binding var numOfCoins: Int
-    @State var progress: Int = 0
-    @State var isSheetPresented = false
-    @State var numTaskCompleted = 0
-    @State var sheetShown = false
+    @State var isNewSheetShown = false
+    @ObservedObject var todoManager: TodoManager
     
     var body: some View {
-
         NavigationView {
-            List{
-                Text("Completed: \(numTaskCompleted)")
-                    .bold()
-                Text("Coins received: \(numOfCoins)")
-                ForEach($todos) { $todo in
-                    // foreach allows deleting
-                    NavigationLink{
-                        TodoDetailView(numTaskCompleted: $numTaskCompleted, todo: $todo)
+            List {
+                ForEach($todoManager.todoItems) { $todo in
+                    NavigationLink {
+                        TodoDetailView(numTaskCompleted: .constant(0), todo: $todo)
                     } label: {
-                        VStack{
-                            HStack{
-                                Image(systemName: todo.isCompleted ? "checkmark.circle.fill" : "circle")
-//                                    .onTapGesture {
-//                                        todo.isDone.toggle()
-//                                    }
-                                Text(todo.title)
-                                    .strikethrough(todo.isCompleted)
-                                    .foregroundColor(todo.isCompleted ? .red : .blue)
-                            }
-                            .onTapGesture {
-                                todo.isCompleted.toggle()
-                            }
-                            
-                            Text(todo.description)
-                                .font(.system(size: 15))
-                                .italic()
-                                .foregroundColor(.gray)
-                            
+                        HStack {
+                            Image(systemName: todo.isCompleted ? "checkmark.circle.fill" : "circle")
+                                .onTapGesture {
+                                    todo.isCompleted.toggle()
+                                }
+                            Text(todo.title)
+                                .foregroundColor(todo.isCompleted ? .gray : nil )
+                                .strikethrough(todo.isCompleted)
                         }
-                        
                     }
-                    
                 }
                 .onDelete { indexSet in
-                    todos.remove(atOffsets: indexSet)
-                    //allows task to be deleted when swiped
+                    todoManager.todoItems.remove(atOffsets: indexSet)
                 }
-                .onMove { indices, newOffset in
-                    todos.move(fromOffsets: indices, toOffset: newOffset)
+                .onMove { originalOffset, newOffset in
+                    todoManager.todoItems.move(fromOffsets: originalOffset, toOffset: newOffset)
                 }
             }
-            .overlay (Group{
-                Text(todos.isEmpty ? "You have no todos!" : "")
-                    .italic()
-                    .font(.title2)
-                    .foregroundColor(.gray)
-            })
-            .navigationTitle("Todo List")
-            .toolbar{
-                ToolbarItemGroup (placement: .navigationBarTrailing){
-                    EditButton()
-                    Button{
-                        isSheetPresented = true
-                    } label: {
+            .navigationTitle("Todos")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        isNewSheetShown = true
+                    } label : {
                         Image(systemName: "plus")
                     }
-                    
                 }
-                
-            }
-            .sheet(isPresented: $isSheetPresented) {
-                NewTodoView(todos: $todos)
-            }
-            .onChange(of: numTaskCompleted) { _ in
-                if numTaskCompleted == todos.count {
-                    numOfCoins += 1
-                    print(numOfCoins)
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
                 }
-                   
-                    
             }
-            
+            .sheet(isPresented: $isNewSheetShown) {
+                NewTodoView(todos: $todoManager.todoItems)
+            }
         }
-         
-        
     }
 }
-struct TodoView_Previews: PreviewProvider {
+
+struct MainTodoListView_Previews: PreviewProvider {
     static var previews: some View {
-        TodoView(numOfCoins: .constant(0))
+        TodoView(todoManager: TodoManager())
     }
 }
+

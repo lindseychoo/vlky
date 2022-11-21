@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var todoManager: TodoManager
     @State private var numOfCoins: Int = 0
     var body: some View {
         TabView {
@@ -23,7 +24,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Store", systemImage: "bag")
                 }
-            TodoView(numOfCoins: $numOfCoins)
+            TodoView(todoManager: TodoManager())
                 .tabItem {
                     Label("Todo", systemImage: "list.bullet")
                 }
@@ -33,7 +34,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentView(todoManager: TodoManager())
     }
 }
 
