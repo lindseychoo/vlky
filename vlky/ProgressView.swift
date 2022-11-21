@@ -14,8 +14,8 @@ struct progress_view: View {
         NavigationView{
             List{
                 
-                Text("Hours studied :")
-                Text("To-Dos completed :")
+                Text("Hours studied : ")
+                Text("To-Dos completed : \(numTaskCompleted)")
                 Text("coins received : \(numOfCoins)")
                 
                 

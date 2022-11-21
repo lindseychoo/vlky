@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 var numOfCoins = Int()
+var numTaskCompleted = Int()
 struct Encouragement {
     var setup: String 
     var words: String

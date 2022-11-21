@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var todoManager: TodoManager
     @State private var numOfCoins: Int = 0
+    @State private var numTaskCompleted: Int = 0
     var body: some View {
         TabView {
             HomeView()
@@ -20,14 +21,15 @@ struct ContentView: View {
                 .tabItem {
                     Label("Timer", systemImage: "timer")
                 }
-            StoreView()
-                .tabItem {
-                    Label("Store", systemImage: "bag")
-                }
             TodoView(todoManager: TodoManager())
                 .tabItem {
                     Label("Todo", systemImage: "list.bullet")
                 }
+            StoreView()
+                .tabItem {
+                    Label("Store", systemImage: "bag")
+                }
+            
         }
     }
 }
