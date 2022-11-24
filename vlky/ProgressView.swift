@@ -16,8 +16,7 @@ struct progress_view: View {
                 
                 Text("Hours studied : ")
                 Text("To-Dos completed : \(numTaskCompleted)")
-                Text("coins received : \(numOfCoins)")
-                
+                Text("Coins received : \(numOfCoins)")
                 
                 HStack{
                     Spacer()

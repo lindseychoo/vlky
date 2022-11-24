@@ -9,7 +9,11 @@ import Foundation
 import SwiftUI
 
 class TodoManager: ObservableObject {
-    
+    @Published var numTaskCompleted: [TodoView] = []{
+        didSet {
+            save()
+        }
+    }
     @Published var todoItems: [Todo] = [] {
         didSet {
             save()
@@ -21,9 +25,8 @@ class TodoManager: ObservableObject {
     }
     
     let sampleTodoItems: [Todo] =  [
-        Todo(title: "Walk the cat", description: ""),
-        Todo(title: "Complete AAs", description: ""),
-        Todo(title: "Fix the cabinet", isCompleted: true, description: "")
+        Todo(title: "Add your first todo!", description: "Click on the Plus Sign on the top right hand corner of the screen to add a new todo", dueDate: "As soon as possible!")
+        
     ]
     
     init() {

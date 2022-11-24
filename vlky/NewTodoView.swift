@@ -10,6 +10,7 @@ import SwiftUI
 struct NewTodoView: View {
     @State var todoName = ""
     @State var todoDesc = ""
+    @State var todoDate = ""
     @Binding var todos: [Todo]
     @Environment(\.presentationMode) var presentationMode
     
@@ -18,15 +19,16 @@ struct NewTodoView: View {
         Form{
             Section{
                 TextField("Task Name", text: $todoName)
+                TextField("Due Date", text: $todoDate)
                 TextField("Description", text: $todoDesc)
                 Button{
                     print("hi")
-                    todos.append(Todo(title: todoName, description: todoDesc))
+                    todos.append(Todo(title: todoName, description: todoDesc, dueDate: todoDate))
                     presentationMode.wrappedValue.dismiss()
                 } label: {
                     Text("Save todo")
                 }
-            }header: {
+            } header: {
                 Text("New Task")
                     .bold()
             }

@@ -25,7 +25,7 @@ struct TodoView: View {
                                     todo.isCompleted.toggle()
                                 }
                             Text(todo.title)
-                                .foregroundColor(todo.isCompleted ? .gray : nil )
+                                .foregroundColor(todo.isCompleted ? .blue : .red )
                                 .strikethrough(todo.isCompleted)
                         }
                     }

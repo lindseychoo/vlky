@@ -11,6 +11,9 @@ struct ContentView: View {
     @StateObject var todoManager: TodoManager
     @State private var numOfCoins: Int = 0
     @State private var numTaskCompleted: Int = 0
+//    init() {
+//            UITabBar.appearance().backgroundColor = UIColor.white
+//        }
     
     var body: some View {
         TabView {
@@ -32,6 +35,7 @@ struct ContentView: View {
                     Label("Store", systemImage: "bag")
                 }
         }
+        
     }
 }
 
