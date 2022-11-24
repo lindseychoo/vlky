@@ -24,7 +24,7 @@ struct TimerView: View {
             
             ZStack{
                 ZStack {
-                    if managerClass.secondElapse <= 10.0 {
+                    if managerClass.secondElapse <= 2.0 {
                         Image("TimerfirstWallpaper")
                             .resizable()
                             .scaledToFit()
@@ -45,7 +45,7 @@ struct TimerView: View {
                 VStack {
                     Spacer(minLength: 100)
                     
-                    Text(String(format: "%.2f", managerClass.secondElapse))
+                    Text(String(format: "%.1f", managerClass.secondElapse))
                         .font(.largeTitle)
                         .padding()
                         

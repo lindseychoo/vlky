@@ -11,12 +11,14 @@ struct ContentView: View {
     @StateObject var todoManager: TodoManager
     @State private var numOfCoins: Int = 0
     @State private var numTaskCompleted: Int = 0
+    
     var body: some View {
         TabView {
-            HomeView()
+            HomeView(numOfCoins: $numOfCoins)
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
+            
             TimerView(numOfCoins: $numOfCoins)
                 .tabItem {
                     Label("Timer", systemImage: "timer")
@@ -29,7 +31,6 @@ struct ContentView: View {
                 .tabItem {
                     Label("Store", systemImage: "bag")
                 }
-            
         }
     }
 }

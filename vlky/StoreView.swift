@@ -21,6 +21,7 @@ struct StoreView: View {
                     .font(.title)
                 ScrollView(.horizontal) {
                     HStack(spacing: 20) {
+                        Spacer().frame(width: 5)
                         ForEach(items) { item in
                             Button {
                             
@@ -37,7 +38,6 @@ struct StoreView: View {
                             }
                         }
                     }
-                    //.padding()
                 }
                 VStack {
                         Text("Mascots")
@@ -45,6 +45,7 @@ struct StoreView: View {
                 }
             ScrollView(.horizontal) {
                     HStack(spacing: 20) {
+                        Spacer().frame(width: 5)
                         ForEach(mascots) { mascot in
                             Button {
                             
@@ -63,12 +64,9 @@ struct StoreView: View {
                             }
                         }
                     }
-                    //.padding()
                 }
             }
-            
             .navigationTitle("Store")
-            
         }
     }
     
