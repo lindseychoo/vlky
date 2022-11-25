@@ -8,31 +8,44 @@
 import SwiftUI
 
 struct ProgressView: View {
-    @State var progress: Int = 0
+    
     @Binding var numOfCoins: Int
     @Binding var numTaskCompleted: Int
+    @Binding var totalTasks: Int
+    
+    
+    @ObservedObject var todoManager: TodoManager
     
     var body: some View {
         NavigationView{
-            List{
+            ZStack{
+                List{
+                    Text("Hours studied : ")
+                    Text("To-Dos completed : \(numTaskCompleted)")
+                    Text("Coins received : \(numOfCoins)")
+                }
                 
-                Text("Hours studied : ")
-                Text("To-Dos completed : \(numTaskCompleted)")
-                Text("Coins received : \(numOfCoins)")
                 
+               
                 HStack{
                     Spacer()
                     VStack{
                         Spacer()
                         Text("Todos done")
                             .font(.title)
-                        circular_progress_view(progress: progress)
-                            .frame(width: 150, height: 150)
+                            .padding()
+                        circular_progress_view(numTaskCompleted: $numTaskCompleted, progress: CGFloat(totalTasks - numTaskCompleted))
+                            .frame(width: 250, height: 250)
+                            
+                        
+                        
+                        Text("\(todoManager.todoItems.filter { !$0.isCompleted }.count ) undone todos")
+                            .padding()
                     }
                     .padding()
                     Spacer()
+                    
                 }
-                
             }
             .navigationTitle("Study session")
             
@@ -44,6 +57,6 @@ struct ProgressView: View {
 
 struct ProgressView_Previews: PreviewProvider {
     static var previews: some View {
-       ProgressView(numOfCoins: .constant(0), numTaskCompleted: .constant(0))
+        ProgressView(numOfCoins: .constant(0), numTaskCompleted: .constant(0), totalTasks: .constant(1), todoManager: TodoManager())
     }
 }

@@ -10,6 +10,8 @@ import SwiftUI
 struct TodoView: View {
     
     @State var isNewSheetShown = false
+    @Binding var numTaskCompleted: Int
+    @Binding var totalTasks: Int
     @ObservedObject var todoManager: TodoManager
     
     var body: some View {
@@ -33,6 +35,8 @@ struct TodoView: View {
                 }
                 .onDelete { indexSet in
                     todoManager.todoItems.remove(atOffsets: indexSet)
+                    totalTasks -= 1
+
                 }
                 .onMove { originalOffset, newOffset in
                     todoManager.todoItems.move(fromOffsets: originalOffset, toOffset: newOffset)
@@ -42,6 +46,7 @@ struct TodoView: View {
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
+                        totalTasks += 1
                         isNewSheetShown = true
                     } label : {
                         Image(systemName: "plus")
@@ -60,7 +65,7 @@ struct TodoView: View {
 
 struct MainTodoListView_Previews: PreviewProvider {
     static var previews: some View {
-        TodoView(todoManager: TodoManager())
+        TodoView(numTaskCompleted: .constant(0), totalTasks: .constant(1), todoManager: TodoManager())
     }
 }
 

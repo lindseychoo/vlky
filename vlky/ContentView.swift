@@ -10,7 +10,8 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var todoManager: TodoManager
     @AppStorage ("coins") var numOfCoins = 0
-    @State private var numTaskCompleted: Int = 0
+    @AppStorage ("DoneTask") var numTaskCompleted = 0
+    @AppStorage ("TotalTask") var totalTasks = 1
 //    init() {
 //            UITabBar.appearance().backgroundColor = UIColor.white
 //        }
@@ -34,14 +35,14 @@ struct ContentView: View {
                 .toolbar(.visible, for: .tabBar)
                 .toolbarBackground(Color.white, for: .tabBar)
             
-            TodoView(todoManager: TodoManager())
+            TodoView(numTaskCompleted: $numTaskCompleted, totalTasks: $totalTasks, todoManager: TodoManager())
                 .tabItem {
                     Label("Todo", systemImage: "list.bullet")
                 }
                 .toolbar(.visible, for: .tabBar)
                 .toolbarBackground(Color.white, for: .tabBar)
             
-            ProgressView(numOfCoins: $numOfCoins, numTaskCompleted: $numTaskCompleted)
+            ProgressView(numOfCoins: $numOfCoins, numTaskCompleted: $numTaskCompleted, totalTasks: $totalTasks, todoManager: TodoManager())
                 .tabItem {
                     Label("Progress", systemImage: "chart.xyaxis.line")
                 }
