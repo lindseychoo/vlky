@@ -25,8 +25,7 @@ struct ContentView: View {
                 }
                 .toolbar(.visible, for: .tabBar)
                 .toolbarBackground(Color.white, for: .tabBar)
-                .toolbarColorScheme(.dark, for: .tabBar)
-            
+
             CountupView(numOfCoins: $numOfCoins)
                 .tabItem {
                     Label("Timer", systemImage: "timer")
@@ -48,7 +47,7 @@ struct ContentView: View {
                 .toolbar(.visible, for: .tabBar)
                 .toolbarBackground(Color.white, for: .tabBar)
             
-            StoreView(isFeedbackResponseViewPresented: $isFeedbackResponseViewPresented)
+            StoreView(isFeedbackResponseViewPresented: $isFeedbackResponseViewPresented, numOfCoins: $numOfCoins)
                 .tabItem {
                     Label("Store", systemImage: "bag")
                 }

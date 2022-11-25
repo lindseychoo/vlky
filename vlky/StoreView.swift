@@ -14,6 +14,7 @@ struct StoreView: View {
     let columns = [GridItem(.adaptive(minimum: 120))]
     var mascots = [mascotItem(mascotName: "Christmas Valkey", mascotImageName: "christmasValkey"), mascotItem(mascotName: "Valentines Valkey", mascotImageName: "valentinesValkey"), mascotItem(mascotName: "Halloween Valkey", mascotImageName: "halloweenValkey")]
     @Binding var isFeedbackResponseViewPresented: Bool
+    @Binding var numOfCoins: Int
     
     var body: some View {
         
@@ -130,7 +131,7 @@ struct StoreView: View {
     
     struct StoreView_Previews: PreviewProvider {
         static var previews: some View {
-            StoreView(isFeedbackResponseViewPresented: .constant(false))
+            StoreView(isFeedbackResponseViewPresented: .constant(false), numOfCoins: .constant(0))
         }
     }
 }

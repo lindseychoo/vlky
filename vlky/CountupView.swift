@@ -9,135 +9,151 @@ import SwiftUI
 
 struct CountupView: View {
    
-   @Binding var numOfCoins: Int
-   
-   @State var hours: Int = 0
-   @State var minutes: Int = 0
-   @State var seconds: Int = 0
-   @State var timerIsPaused: Bool = true
-   
-   @State var timer: Timer? = nil
-   
-   var body: some View {
-       NavigationView{
-           ZStack{
-               ZStack {
-                   if hours % 2 == 0 {
-                       Image("TimerfirstWallpaper")
-                           .resizable()
-                           .scaledToFit()
-                           .aspectRatio(contentMode: .fill)
-                           .edgesIgnoringSafeArea(.all)
-                           .opacity(0.7)
-                   } else {
-                       Image("TimerSecondWallpaper")
-                           .resizable()
-                           .scaledToFit()
-                           .aspectRatio(contentMode: .fill)
-                           .edgesIgnoringSafeArea(.all)
-                           .opacity(0.7)
-                   }
-               }
-               .clipped()
-               .edgesIgnoringSafeArea(.all)
-               
-               VStack {
+    
+    @Binding var numOfCoins: Int
+    
+    @State var hours: Int = 0
+    @State var minutes: Int = 0
+    @State var seconds: Int = 0
+    @State var timerIsPaused: Bool = true
+    
+    @State var timer: Timer? = nil
+    
+    var body: some View {
+        NavigationView{
+            ZStack{
+                ZStack {
+                    if hours % 2 == 0 {
+                        Image("TimerfirstWallpaper")
+                            .resizable()
+                            .scaledToFit()
+                            .aspectRatio(contentMode: .fill)
+                            .edgesIgnoringSafeArea(.all)
+                            .opacity(0.7)
+                    } else {
+                        Image("TimerSecondWallpaper")
+                            .resizable()
+                            .scaledToFit()
+                            .aspectRatio(contentMode: .fill)
+                            .edgesIgnoringSafeArea(.all)
+                            .opacity(0.7)
+                    }
+                }
+                .clipped()
+                .edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    
+                    HStack {
+                        Spacer()
+                        HStack{
+                            Image(systemName: "dollarsign.circle")
+                                .font(.title)
+                            Text("\(numOfCoins)")
+                                .font(.title)
+                        }
+                        .padding(.horizontal)
+                        
+                    }
+                    Text("\(hours):\(minutes):\(seconds)")
+                        .font(.largeTitle)
+                        .bold()
+                        .padding(.top)
+                        .padding(.bottom)
+                    
+                    Image("mascot")
+                        .resizable()
+                        .mask(Circle())
+                        .scaledToFit()
+                    
+                    if timerIsPaused {
+                        
+                        HStack {
+                            Button(action:{
+                                self.restartTimer()
+                            }){
+                                Image(systemName: "stop.fill")
+                                    .foregroundColor(.white)
+                                    .font(.title)
+                                    .padding()
+                                    .background(Color.red)
+                                    .cornerRadius(100)
+                            }
+                            .padding(.bottom)
+                            .padding(.horizontal)
+                            .padding(.bottom)
+                            .padding(.bottom)
+                            .padding(.bottom)
+                            .padding(.bottom)
+                            
+                            
+                            Button(action:{
+                                self.startTimer()
+                            }){
+                                Image(systemName: "play.fill")
+                                    .foregroundColor(.white)
+                                    .font(.title)
+                                    .padding()
+                                    .background(Color.blue)
+                                    .cornerRadius(100)
+                            }
+                            .padding(.bottom)
+                            .padding(.bottom)
+                            .padding(.bottom)
+                            .padding(.bottom)
+                            .padding(.bottom)
+                        }
+                        .padding(.bottom)
+                    } else {
+                        Button(action:{
+                            self.stopTimer()
+                        }){
+                            Image(systemName: "pause.fill")
+                                .foregroundColor(.white)
+                                .font(.title)
+                                .padding()
+                                .background(Color.orange)
+                                .cornerRadius(100)
+                        }
+                        .padding(.bottom)
+                        .padding(.horizontal)
+                        .padding(.bottom)
+                        .padding(.bottom)
+                        .padding(.bottom)
+                        .padding(.bottom)
+                        .padding(.bottom)
+                    }
+                }
+                .onChange(of: minutes) { _ in
+                    if Int(minutes) % 10 == 0 {
+                        numOfCoins += 1
+                        
+                    }
+                }
+                .navigationTitle("Stop Watch")
+                .padding(.all)
+            
+        }
+        
+    }
+}
+    func startTimer(){
+        timerIsPaused = false
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ tempTimer in
+            if self.seconds == 59 {
+                self.seconds = 0
+                if self.minutes == 59 {
+                    self.minutes = 0
+                    self.hours = self.hours + 1
+                } else {
+                    self.minutes = self.minutes + 1
+                }
+            } else {
+                self.seconds = self.seconds + 1
+            }
+        }
+    }
 
-                   HStack {
-                       Spacer()
-                       HStack{
-                           Image(systemName: "dollarsign.circle")
-                               .font(.title)
-                           Text("\(numOfCoins)")
-                               .font(.title)
-                       }
-                       .padding(.horizontal)
-                       
-                   }
-                   Text("\(hours):\(minutes):\(seconds)")
-                       .font(.largeTitle)
-                       .bold()
-                       .padding(.top)
-                   
-                   Image("mascot")
-                       .resizable()
-                       .mask(Circle())
-                       .scaledToFit()
-                   
-                   if timerIsPaused {
-                       
-                       HStack {
-                           Button(action:{
-                               self.restartTimer()
-                           }){
-                               Image(systemName: "stop.fill")
-                                   .foregroundColor(.white)
-                                   .font(.title)
-                                   .padding()
-                                   .background(Color.red)
-                                   .cornerRadius(100)
-                           }
-                           .padding(.bottom)
-                           .padding(.horizontal)
-                           .padding(.bottom)
-                           
-                           Button(action:{
-                               self.startTimer()
-                           }){
-                               Image(systemName: "play.fill")
-                                   .foregroundColor(.white)
-                                   .font(.title)
-                                   .padding()
-                                   .background(Color.blue)
-                                   .cornerRadius(100)
-                           }
-                           .padding(.bottom)
-                           .padding(.bottom)
-                       }
-                   } else {
-                       Button(action:{
-                           self.stopTimer()
-                       }){
-                           Image(systemName: "pause.fill")
-                               .foregroundColor(.white)
-                               .font(.title)
-                               .padding()
-                               .background(Color.orange)
-                               .cornerRadius(100)
-                       }
-                       .padding(.bottom)
-                       .padding(.horizontal)
-                       .padding(.bottom)
-                   }
-               }
-               .onChange(of: minutes) { _ in
-                   if Int(minutes) % 1 == 0 {
-                       numOfCoins += 1
-                       
-                   }
-               }
-               .navigationTitle("Stop Watch")
-
-           }
-       }
-   }
-   
-   func startTimer(){
-       timerIsPaused = false
-       timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ tempTimer in
-           if self.seconds == 59 {
-               self.seconds = 0
-               if self.minutes == 59 {
-                   self.minutes = 0
-                   self.hours = self.hours + 1
-               } else {
-                   self.minutes = self.minutes + 1
-               }
-           } else {
-               self.seconds = self.seconds + 1
-           }
-       }
-   }
    
    func stopTimer(){
        timerIsPaused = true
