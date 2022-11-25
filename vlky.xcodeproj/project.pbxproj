@@ -85,13 +85,13 @@
 				7E91B3E429038800003A33E8 /* ContentView.swift */,
 				D9F24010293053A000426D0F /* FeedbackResponseView.swift */,
 				7E7BD23D290393580002F5B9 /* HomeView.swift */,
+				99A3F5772930A64200F4AC26 /* CountupView.swift */,
 				7EA186F429248F6B0023E8E1 /* ProgressView.swift */,
 				7E09F6AA2924B2630037F8D2 /* CircularProgressView.swift */,
 				D940D4B5292BCD5D003A70DD /* TodoView.swift */,
 				D948C181292724BC00E43C43 /* TodoManager.swift */,
 				D9626E05291F36EA00516015 /* TodoDetailView.swift */,
 				D9626E03291F34F800516015 /* Todo.swift */,
-				99A3F5772930A64200F4AC26 /* CountupView.swift */,
 				D9626E01291F2F4700516015 /* NewTodoView.swift */,
 				7E7BD243290393D70002F5B9 /* StoreView.swift */,
 				D908397C291F36C700825FBD /* foodItem.swift */,
@@ -334,6 +334,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -362,6 +363,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

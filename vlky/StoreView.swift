@@ -19,10 +19,22 @@ struct StoreView: View {
         
         NavigationView {
             VStack{
+                HStack {
+                    Spacer()
+                    HStack{
+                        Image(systemName: "dollarsign.circle")
+                            .font(.title)
+                        Text("\(numOfCoins)")
+                            .font(.title)
+                    }
+                    .padding(.horizontal)
+                }
                 Text("Decorations")
-                    .font(.title)
+                    .font(.title2)
+                    .italic()
+                    .bold()
                 ScrollView(.horizontal) {
-                    HStack(spacing: 20) {
+                    HStack(spacing: 5) {
                         Spacer().frame(width: 5)
                         ForEach(decorationItems) { decorationItem in
                             Button {
@@ -49,10 +61,12 @@ struct StoreView: View {
                 }
                 VStack {
                     Text("Food")
-                        .font(.title)
+                        .font(.title2)
+                        .italic()
+                        .bold()
                 }
                 ScrollView(.horizontal) {
-                    HStack(spacing: 20) {
+                    HStack(spacing: 5) {
                         Spacer().frame(width: 5)
                         ForEach(foodItems) { foodItem in
                             Button {
@@ -79,10 +93,12 @@ struct StoreView: View {
                 }
                 VStack {
                     Text("Mascots")
-                        .font(.title)
+                        .font(.title2)
+                        .italic()
+                        .bold()
                 }
                 ScrollView(.horizontal) {
-                    HStack(spacing: 20) {
+                    HStack(spacing: 5) {
                         Spacer().frame(width: 5)
                         ForEach(mascots) { mascot in
                             Button {

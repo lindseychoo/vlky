@@ -14,6 +14,7 @@ struct TodoView: View {
     
     var body: some View {
         NavigationView {
+            
             List {
                 ForEach($todoManager.todoItems) { $todo in
                     NavigationLink {

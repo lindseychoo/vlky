@@ -3,12 +3,36 @@ import SwiftUI
 struct HomeView: View {
     
     let encouragements = [
-        Encouragement(setup: "", words: "keep going"),
-        Encouragement(setup: "", words: "you're doing well"),
-        Encouragement(setup: "", words: "good job"),
-        Encouragement(setup: "", words: "keep up the good work"),
-        Encouragement(setup: "", words: "fly high"),
-        Encouragement(setup: "", words: "continue striving")
+        Encouragement(setup: "", words: "Tough times don’t last."),
+        Encouragement(setup: "", words: "You are doing well!"),
+        Encouragement(setup: "", words: "Great job!"),
+        Encouragement(setup: "", words: "Keep up the good work!"),
+        Encouragement(setup: "", words: "Fly high!"),
+        Encouragement(setup: "", words: "Continue striving."),
+        Encouragement(setup: "", words: "The road to excellence is near."),
+        Encouragement(setup: "", words: "Keep going!"),
+        Encouragement(setup: "", words: "You can."),
+        Encouragement(setup: "", words: "Be yourself."),
+        Encouragement(setup: "", words: "Take a break!"),
+        Encouragement(setup: "", words: "Believe in youself"),
+        Encouragement(setup: "", words: "Dream big!"),
+        Encouragement(setup: "", words: "Work for it."),
+        Encouragement(setup: "", words: "The sky's the limit."),
+        Encouragement(setup: "", words: "Practice makes perfect!"),
+        Encouragement(setup: "", words: "Reach for the stars."),
+        Encouragement(setup: "", words: "You can and you will."),
+        Encouragement(setup: "", words: "Own who you are!"),
+        Encouragement(setup: "", words: "Commit to your dream!"),
+        Encouragement(setup: "", words: "You can do it."),
+        Encouragement(setup: "", words: "You are enough."),
+        Encouragement(setup: "", words: "Learn from your mistakes!"),
+        Encouragement(setup: "", words: "Grow."),
+        Encouragement(setup: "", words: "What's stopping you?"),
+        Encouragement(setup: "", words: "It is never too late."),
+        Encouragement(setup: "", words: "One day at a time."),
+        Encouragement(setup: "", words: "Don't quit!"),
+        Encouragement(setup: "", words: "Keep at it!"),
+        Encouragement(setup: "", words: "Progress is better than perfection.")
     ]
     
     @State var showEncouragement = false
@@ -26,33 +50,26 @@ struct HomeView: View {
                     .opacity(0.7)
                 
                 VStack {
-                    
                     HStack {
-                        Text("                              ")
-                            .font(.largeTitle)
-                            .bold()
-                            .padding()
-                        Image(systemName: "dollarsign.circle")
-                            .font(.title)
-                        Text("\(numOfCoins)")
-                            .font(.title)
-                        
+                        Spacer()
+                        HStack{
+                            Image(systemName: "dollarsign.circle")
+                                .font(.title)
+                            Text("\(numOfCoins)")
+                                .font(.title)
+                        }
+                        .padding(.horizontal)
+                        .padding(.horizontal)
+                      
                     }
                     Image("mascot")
                         .resizable()
                         .scaledToFit()
                         .mask(Circle())
+                        .padding(.top)
                         .padding()
                     
                     ZStack {
-                        //                    Color(.systemBackground)
-                        //                        .frame(maxHeight: 200)
-                        //                        .onTapGesture{
-                        //                            if showEncouragement {
-                        //                                currentEncouragement += 1
-                        //                                showEncouragement = false
-                        //                            }
-                        //                        }
                         VStack {
                             Text(encouragements[currentEncouragement % encouragements.count].setup)
                             
@@ -61,19 +78,17 @@ struct HomeView: View {
                                 currentEncouragement += 1
                             } label: {
                                 Text (" Valkey ")
-                                    .font(.system(size: 35))
+                                    .font(.title)
                                     .padding()
                                     .background(.blue)
                                     .foregroundColor(.white)
-                                    .cornerRadius(20)
+                                    .cornerRadius(10)
                             }
                             .padding()
-                            
-                            //                        if showEncouragement {
                             Text(showEncouragement ? encouragements [currentEncouragement % encouragements.count].words : "")
-                                .font(.system(size: 25))
+                                .font(.title2)
+                                .italic()
                                 .padding()
-                            //                        }
                             
                         }
                     }

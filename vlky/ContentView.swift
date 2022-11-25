@@ -23,23 +23,38 @@ struct ContentView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
+                .toolbar(.visible, for: .tabBar)
+                .toolbarBackground(Color.white, for: .tabBar)
+                .toolbarColorScheme(.dark, for: .tabBar)
             
             CountupView(numOfCoins: $numOfCoins)
                 .tabItem {
                     Label("Timer", systemImage: "timer")
                 }
+                .toolbar(.visible, for: .tabBar)
+                .toolbarBackground(Color.white, for: .tabBar)
+            
             TodoView(todoManager: TodoManager())
                 .tabItem {
                     Label("Todo", systemImage: "list.bullet")
                 }
+                .toolbar(.visible, for: .tabBar)
+                .toolbarBackground(Color.white, for: .tabBar)
+            
             ProgressView(numOfCoins: $numOfCoins, numTaskCompleted: $numTaskCompleted)
                 .tabItem {
                     Label("Progress", systemImage: "chart.xyaxis.line")
                 }
+                .toolbar(.visible, for: .tabBar)
+                .toolbarBackground(Color.white, for: .tabBar)
+            
             StoreView(isFeedbackResponseViewPresented: $isFeedbackResponseViewPresented)
                 .tabItem {
                     Label("Store", systemImage: "bag")
                 }
+                .toolbar(.visible, for: .tabBar)
+                .toolbarBackground(Color.white, for: .tabBar)
+            
         }
         
     }

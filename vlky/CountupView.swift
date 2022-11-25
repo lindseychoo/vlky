@@ -42,27 +42,27 @@ struct CountupView: View {
                .edgesIgnoringSafeArea(.all)
                
                VStack {
-//                    HStack{
-//                        Text("Stop Watch       ")
-//                            .font(.largeTitle)
-//                            .bold()
-//                            .padding()
-//                        Image(systemName: "dollarsign.circle")
-//                            .font(.title)
-//                        Text("\(numOfCoins)")
-//                            .font(.title)
-//                    }
-                   
+
+                   HStack {
+                       Spacer()
+                       HStack{
+                           Image(systemName: "dollarsign.circle")
+                               .font(.title)
+                           Text("\(numOfCoins)")
+                               .font(.title)
+                       }
+                       .padding(.horizontal)
+                       
+                   }
                    Text("\(hours):\(minutes):\(seconds)")
                        .font(.largeTitle)
                        .bold()
-                       .padding()
+                       .padding(.top)
                    
                    Image("mascot")
                        .resizable()
                        .mask(Circle())
                        .scaledToFit()
-                       .padding()
                    
                    if timerIsPaused {
                        
@@ -77,7 +77,9 @@ struct CountupView: View {
                                    .background(Color.red)
                                    .cornerRadius(100)
                            }
-                           .padding(.all)
+                           .padding(.bottom)
+                           .padding(.horizontal)
+                           .padding(.bottom)
                            
                            Button(action:{
                                self.startTimer()
@@ -89,7 +91,8 @@ struct CountupView: View {
                                    .background(Color.blue)
                                    .cornerRadius(100)
                            }
-                           .padding(.all)
+                           .padding(.bottom)
+                           .padding(.bottom)
                        }
                    } else {
                        Button(action:{
@@ -102,17 +105,19 @@ struct CountupView: View {
                                .background(Color.orange)
                                .cornerRadius(100)
                        }
-                       .padding(.all)
+                       .padding(.bottom)
+                       .padding(.horizontal)
+                       .padding(.bottom)
                    }
                }
-               .onChange(of: seconds) { _ in
-                   if Int(minutes) % 10 == 0 {
+               .onChange(of: minutes) { _ in
+                   if Int(minutes) % 1 == 0 {
                        numOfCoins += 1
                        
                    }
                }
                .navigationTitle("Stop Watch")
-               .padding(.all)
+
            }
        }
    }
