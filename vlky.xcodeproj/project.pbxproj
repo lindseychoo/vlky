@@ -24,6 +24,7 @@
 		D9626E04291F34F800516015 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9626E03291F34F800516015 /* Todo.swift */; };
 		D9626E06291F36EA00516015 /* TodoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9626E05291F36EA00516015 /* TodoDetailView.swift */; };
 		D9D5A358292759BF007C8B68 /* mascotItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D5A357292759BF007C8B68 /* mascotItem.swift */; };
+		D9F24011293053A000426D0F /* FeedbackResponseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F24010293053A000426D0F /* FeedbackResponseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		D9626E03291F34F800516015 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		D9626E05291F36EA00516015 /* TodoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailView.swift; sourceTree = "<group>"; };
 		D9D5A357292759BF007C8B68 /* mascotItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mascotItem.swift; sourceTree = "<group>"; };
+		D9F24010293053A000426D0F /* FeedbackResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackResponseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				7E91B3E229038800003A33E8 /* vlkyApp.swift */,
 				7E91B3E429038800003A33E8 /* ContentView.swift */,
+				D9F24010293053A000426D0F /* FeedbackResponseView.swift */,
 				7E7BD23D290393580002F5B9 /* HomeView.swift */,
 				7E7BD23F2903937C0002F5B9 /* TimerView.swift */,
 				7EA186F429248F6B0023E8E1 /* ProgressView.swift */,
@@ -180,6 +183,7 @@
 				7E91B3E529038800003A33E8 /* ContentView.swift in Sources */,
 				7E7BD23E290393580002F5B9 /* HomeView.swift in Sources */,
 				D9626E04291F34F800516015 /* Todo.swift in Sources */,
+				D9F24011293053A000426D0F /* FeedbackResponseView.swift in Sources */,
 				D9626E06291F36EA00516015 /* TodoDetailView.swift in Sources */,
 				7EA186F529248F6B0023E8E1 /* ProgressView.swift in Sources */,
 				D9D5A358292759BF007C8B68 /* mascotItem.swift in Sources */,

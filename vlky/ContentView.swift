@@ -15,6 +15,8 @@ struct ContentView: View {
 //            UITabBar.appearance().backgroundColor = UIColor.white
 //        }
     
+    @State var isFeedbackResponseViewPresented: Bool = false
+    
     var body: some View {
         TabView {
             HomeView(numOfCoins: $numOfCoins)
@@ -30,7 +32,7 @@ struct ContentView: View {
                 .tabItem {
                     Label("Todo", systemImage: "list.bullet")
                 }
-            StoreView()
+            StoreView(isFeedbackResponseViewPresented: $isFeedbackResponseViewPresented)
                 .tabItem {
                     Label("Store", systemImage: "bag")
                 }

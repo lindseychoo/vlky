@@ -12,9 +12,10 @@ struct StoreView: View {
     var items = [storeItem(itemName: "Chest 1", imageName: "chest1"), storeItem(itemName: "Chest 2", imageName: "chest2"), storeItem(itemName: "Chest 3", imageName: "chest3"), storeItem(itemName: "Chest 4", imageName: "chest4")]
     let columns = [GridItem(.adaptive(minimum: 120))]
     var mascots = [mascotItem(mascotName: "Christmas Valkey", mascotImageName: "christmasValkey"), mascotItem(mascotName: "Valentines Valkey", mascotImageName: "valentinesValkey"), mascotItem(mascotName: "Halloween Valkey", mascotImageName: "halloweenValkey")]
+    @Binding var isFeedbackResponseViewPresented: Bool
     
     var body: some View {
-       
+        
         NavigationView {
             VStack{
                 Text("Chests")
@@ -24,7 +25,7 @@ struct StoreView: View {
                         Spacer().frame(width: 5)
                         ForEach(items) { item in
                             Button {
-                            
+                                isFeedbackResponseViewPresented = true
                             } label: {
                                 VStack {
                                     Image(item.imageName)
@@ -36,19 +37,23 @@ struct StoreView: View {
                                 .background(.cyan)
                                 .cornerRadius(10)
                             }
+                            .sheet(isPresented: $isFeedbackResponseViewPresented) {
+                                FeedbackResponseView(isClicked: true)
+                            }
+                            
                         }
                     }
                 }
                 VStack {
-                        Text("Mascots")
-                            .font(.title)
+                    Text("Mascots")
+                        .font(.title)
                 }
-            ScrollView(.horizontal) {
+                ScrollView(.horizontal) {
                     HStack(spacing: 20) {
                         Spacer().frame(width: 5)
                         ForEach(mascots) { mascot in
                             Button {
-                            
+                                isFeedbackResponseViewPresented = true
                             } label: {
                                 VStack {
                                     Image(mascot.mascotImageName)
@@ -62,18 +67,21 @@ struct StoreView: View {
                                 .background(.cyan)
                                 .cornerRadius(10)
                             }
+                            .sheet(isPresented: $isFeedbackResponseViewPresented) {
+                                FeedbackResponseView(isClicked: true)
+                            }
                         }
                     }
                 }
+                .navigationTitle("Store")
             }
-            .navigationTitle("Store")
         }
+        
     }
     
-}
-        
-        struct StoreView_Previews: PreviewProvider {
-            static var previews: some View {
-                StoreView()
-            }
+    struct StoreView_Previews: PreviewProvider {
+        static var previews: some View {
+            StoreView(isFeedbackResponseViewPresented: .constant(false))
         }
+    }
+}
