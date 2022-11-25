@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+ 
 struct ContentView: View {
     @StateObject var todoManager: TodoManager
     @AppStorage ("coins") var numOfCoins = 0
@@ -24,7 +24,7 @@ struct ContentView: View {
                     Label("Home", systemImage: "house")
                 }
             
-            TimerView(numOfCoins: $numOfCoins)
+            CountupView(numOfCoins: $numOfCoins)
                 .tabItem {
                     Label("Timer", systemImage: "timer")
                 }
@@ -44,10 +44,11 @@ struct ContentView: View {
         
     }
 }
-
+ 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView(todoManager: TodoManager())
     }
 }
+
 

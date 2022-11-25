@@ -1,12 +1,5 @@
-//
-//  HomeView.swift
-//  vlky
-//
-//  Created by Lindsey Choo on 22/10/22.
-//
-
 import SwiftUI
-
+ 
 struct HomeView: View {
     
     let encouragements = [
@@ -23,74 +16,77 @@ struct HomeView: View {
     @Binding var numOfCoins: Int
     
     var body: some View {
-        ZStack{
-            Image("HomeWallpaper")
-                .resizable()
-                .scaledToFit()
-                .aspectRatio(contentMode: .fill)
-                .edgesIgnoringSafeArea([.top, .bottom])
-            
-            VStack {
-                
-                HStack {
-                    Text("Welcome           ")
-                        .font(.largeTitle)
-                        .bold()
-                        .padding()
-                    Image(systemName: "dollarsign.circle")
-                        .font(.title)
-                    Text("\(numOfCoins)")
-                        .font(.title)
-                    
-                }
-                Image("mascot")
+        NavigationView{
+            ZStack{
+                Image("HomeWallpaper")
                     .resizable()
                     .scaledToFit()
-                    .mask(Circle())
-                    .padding()
+                    .aspectRatio(contentMode: .fill)
+                    .edgesIgnoringSafeArea([.top, .bottom])
+                    .opacity(0.7)
                 
-                ZStack {
-//                    Color(.systemBackground)
-//                        .frame(maxHeight: 200)
-//                        .onTapGesture{
-//                            if showEncouragement {
-//                                currentEncouragement += 1
-//                                showEncouragement = false
-//                            }
-//                        }
-                    VStack {
-                        Text(encouragements[currentEncouragement % encouragements.count].setup)
+                VStack {
+                    
+                    HStack {
+                        Text("                              ")
+                            .font(.largeTitle)
+                            .bold()
+                            .padding()
+                        Image(systemName: "dollarsign.circle")
+                            .font(.title)
+                        Text("\(numOfCoins)")
+                            .font(.title)
                         
-                        Button {
-                            showEncouragement = true
-                            currentEncouragement += 1
-                        } label: {
-                            Text (" Valkey ")
-                                .font(.system(size: 35))
-                                .padding()
-                                .background(.blue)
-                                .foregroundColor(.white)
-                                .cornerRadius(20)
-                        }
+                    }
+                    Image("mascot")
+                        .resizable()
+                        .scaledToFit()
+                        .mask(Circle())
                         .padding()
-                        
-//                        if showEncouragement {
-                        Text(showEncouragement ? encouragements [currentEncouragement % encouragements.count].words : "")
-                            .font(.system(size: 25))
+                    
+                    ZStack {
+                        //                    Color(.systemBackground)
+                        //                        .frame(maxHeight: 200)
+                        //                        .onTapGesture{
+                        //                            if showEncouragement {
+                        //                                currentEncouragement += 1
+                        //                                showEncouragement = false
+                        //                            }
+                        //                        }
+                        VStack {
+                            Text(encouragements[currentEncouragement % encouragements.count].setup)
+                            
+                            Button {
+                                showEncouragement = true
+                                currentEncouragement += 1
+                            } label: {
+                                Text (" Valkey ")
+                                    .font(.system(size: 35))
+                                    .padding()
+                                    .background(.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(20)
+                            }
+                            .padding()
+                            
+                            //                        if showEncouragement {
+                            Text(showEncouragement ? encouragements [currentEncouragement % encouragements.count].words : "")
+                                .font(.system(size: 25))
                                 .padding()
-//                        }
-                        
+                            //                        }
+                            
+                        }
                     }
                 }
             }
+            .navigationTitle("Welcome")
         }
-        
         
         
     }
 }
-
-
+ 
+ 
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         HomeView(numOfCoins: .constant(1))

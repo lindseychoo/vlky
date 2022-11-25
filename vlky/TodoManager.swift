@@ -25,7 +25,7 @@ class TodoManager: ObservableObject {
     }
     
     let sampleTodoItems: [Todo] =  [
-        Todo(title: "Add your first todo!", description: "Click on the Plus Sign on the top right hand corner of the screen to add a new todo", dueDate: "As soon as possible!")
+        Todo(title: "Add your first todo!", description: "Click on the Plus Sign on the top right hand corner of the screen to add a new todo", dueDate: "Add your first due date!")
         
     ]
     
