@@ -29,7 +29,7 @@ struct TodoDetailView: View {
                     }
                 } label: {
                     Text(todo.isCompleted ? "Mark Incomplete" : "Mark as done")
-                        .foregroundColor(todo.isCompleted ? .blue : .red)
+                        .foregroundColor(todo.isCompleted ? .red : .blue)
                 }
             }
         }

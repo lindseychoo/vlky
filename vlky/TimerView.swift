@@ -21,37 +21,42 @@ struct TimerView: View {
     
     var body: some View {
         NavigationView {
-            
             ZStack{
                 ZStack {
-                    if managerClass.secondElapse <= 2.0 {
+                    if managerClass.secondElapse <= 120.0 {
                         Image("TimerfirstWallpaper")
                             .resizable()
                             .scaledToFit()
                             .aspectRatio(contentMode: .fill)
-                            .edgesIgnoringSafeArea(.top)
+                            .edgesIgnoringSafeArea(.all)
                             .opacity(0.7)
                     } else {
                         Image("TimerSecondWallpaper")
                             .resizable()
                             .scaledToFit()
                             .aspectRatio(contentMode: .fill)
-                            .edgesIgnoringSafeArea(.top)
+                            .edgesIgnoringSafeArea(.all)
                     }
                 }
                 .clipped()
-                .edgesIgnoringSafeArea(.top)
+                .edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    Spacer(minLength: 100)
+                    Spacer(minLength: 75)
                     
+                    HStack{
+                        Text("Stop Watch       ")
+                            .font(.largeTitle)
+                            .bold()
+                            .padding()
+                        Image(systemName: "dollarsign.circle")
+                            .font(.title)
+                        Text("\(numOfCoins)")
+                            .font(.title)
+                    }
                     Text(String(format: "%.1f", managerClass.secondElapse))
                         .font(.largeTitle)
                         .padding()
-                        
-                    
-                    Text("\(numOfCoins)")
-                        .font(.largeTitle)
                     
                     Image("mascot")
                         .resizable()
@@ -164,7 +169,6 @@ struct TimerView: View {
                         Text("\(String(format: "%.2f", lap.lap)) s")
                     }
                 }
-                .navigationTitle("Stop Watch")
                 .onChange(of: managerClass.secondElapse) { _ in
                     if Int(managerClass.secondElapse * 10) % 100 == 0 {
                         numOfCoins += 1
@@ -194,7 +198,7 @@ class ManagerClass:ObservableObject {
     func start() {
         mode = .running
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
-             self.secondElapse += 0.1
+            self.secondElapse += 0.1
                 
             
         }
@@ -214,6 +218,6 @@ class ManagerClass:ObservableObject {
 
 struct TimerView_Previews: PreviewProvider {
     static var previews: some View {
-        TimerView(numOfCoins: .constant(1))
+        TimerView(numOfCoins: .constant(0))
     }
 }

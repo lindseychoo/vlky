@@ -31,14 +31,16 @@ struct HomeView: View {
                 .edgesIgnoringSafeArea([.top, .bottom])
             
             VStack {
+                
                 HStack {
-                    Text("Welcome")
-                        .font(.system(size: 35))
+                    Text("Welcome           ")
+                        .font(.largeTitle)
+                        .bold()
                         .padding()
                     Image(systemName: "dollarsign.circle")
-                        .font(.system(size: 35))
+                        .font(.title)
                     Text("\(numOfCoins)")
-                        .font(.system(size: 35))
+                        .font(.title)
                     
                 }
                 Image("mascot")

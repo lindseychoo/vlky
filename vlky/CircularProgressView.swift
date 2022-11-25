@@ -11,6 +11,7 @@ struct circular_progress_view: View {
     
    @State var progress: Int
     
+    
     var body: some View {
         ZStack{
             Circle()

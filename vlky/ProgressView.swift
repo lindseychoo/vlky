@@ -7,8 +7,10 @@
 
 import SwiftUI
 
-struct progress_view: View {
+struct ProgressView: View {
     @State var progress: Int = 0
+    @Binding var numOfCoins: Int
+    @Binding var numTaskCompleted: Int
     
     var body: some View {
         NavigationView{
@@ -40,8 +42,8 @@ struct progress_view: View {
     }
 }
 
-struct progress_view_Previews: PreviewProvider {
+struct ProgressView_Previews: PreviewProvider {
     static var previews: some View {
-        progress_view()
+       ProgressView(numOfCoins: .constant(0), numTaskCompleted: .constant(0))
     }
 }

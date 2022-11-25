@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject var todoManager: TodoManager
-    @State private var numOfCoins: Int = 0
+    @AppStorage ("coins") var numOfCoins = 0
     @State private var numTaskCompleted: Int = 0
 //    init() {
 //            UITabBar.appearance().backgroundColor = UIColor.white
@@ -31,6 +31,10 @@ struct ContentView: View {
             TodoView(todoManager: TodoManager())
                 .tabItem {
                     Label("Todo", systemImage: "list.bullet")
+                }
+            ProgressView(numOfCoins: $numOfCoins, numTaskCompleted: $numTaskCompleted)
+                .tabItem {
+                    Label("Progress", systemImage: "chart.xyaxis.line")
                 }
             StoreView(isFeedbackResponseViewPresented: $isFeedbackResponseViewPresented)
                 .tabItem {
