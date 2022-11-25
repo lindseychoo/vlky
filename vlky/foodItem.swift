@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct storeItem: Identifiable {
-    var itemName: String
-    var imageName: String
+struct foodItem: Identifiable {
+    var foodItemName: String
+    var foodImageName: String
     var id = UUID()
     
 }
