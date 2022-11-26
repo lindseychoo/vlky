@@ -11,9 +11,12 @@ struct CountupView: View {
    
    @Binding var numOfCoins: Int
    
-   @State var hours: Int = 0
-   @State var minutes: Int = 0
-   @State var seconds: Int = 0
+   @Binding var hours: Int
+   @Binding var minutes: Int
+   @Binding var seconds: Int
+    @State var currentHour: Int = 0
+    @State var currentMin: Int = 0
+    @State var currentSec: Int = 0
    @State var timerIsPaused: Bool = true
    
    @State var timer: Timer? = nil
@@ -22,7 +25,7 @@ struct CountupView: View {
        NavigationView{
            ZStack{
                ZStack {
-                   if hours % 2 == 0 {
+                   if currentHour % 2 == 0 {
                        Image("TimerfirstWallpaper")
                            .resizable()
                            .scaledToFit()
@@ -54,7 +57,7 @@ struct CountupView: View {
                        .padding(.horizontal)
                        
                    }
-                   Text("\(hours):\(minutes):\(seconds)")
+                   Text("\(currentHour):\(currentMin):\(currentSec)")
                        .font(.largeTitle)
                        .bold()
                        .padding(.top)
@@ -110,8 +113,8 @@ struct CountupView: View {
                        .padding(.bottom)
                    }
                }
-               .onChange(of: minutes) { _ in
-                   if Int(minutes) % 1 == 0 {
+               .onChange(of: currentMin) { _ in
+                   if Int(currentMin) % 1 == 0 {
                        numOfCoins += 1
                        
                    }
@@ -125,16 +128,16 @@ struct CountupView: View {
    func startTimer(){
        timerIsPaused = false
        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true){ tempTimer in
-           if self.seconds == 59 {
-               self.seconds = 0
-               if self.minutes == 59 {
-                   self.minutes = 0
-                   self.hours = self.hours + 1
+           if self.currentSec == 59 {
+               self.currentSec = 0
+               if self.currentMin == 59 {
+                   self.currentMin = 0
+                   self.currentHour = self.currentHour + 1
                } else {
-                   self.minutes = self.minutes + 1
+                   self.currentMin = self.currentMin + 1
                }
            } else {
-               self.seconds = self.seconds + 1
+               self.currentSec = self.currentSec + 1
            }
        }
    }
@@ -146,14 +149,44 @@ struct CountupView: View {
    }
    
    func restartTimer(){
-       hours = 0
-       minutes = 0
-       seconds = 0
+       hours += currentHour
+       minutes += currentMin
+       seconds += currentSec
+       
+       if seconds >= 60 {
+           seconds -= 60
+           minutes += 1
+       }
+       
+       if minutes >= 60 {
+           minutes -= 60
+           hours += 1
+       }
+       
+       currentHour = 0
+       currentMin = 0
+       currentSec = 0
    }
 }
 
+
+
 struct CountupView_Previews: PreviewProvider {
+    
+    struct bindingholder: View {
+        @State var hours = 0
+        @State var minutes = 0
+        @State var seconds = 0
+        var body: some View {
+            CountupView(numOfCoins: .constant(0), hours: $hours, minutes: $minutes, seconds: $seconds)
+
+        }
+        
+    }
+    
    static var previews: some View {
-       CountupView(numOfCoins: .constant(0))
+       bindingholder()
+//       CountupView(numOfCoins: .constant(0), hours: .constant(0), minutes: .constant(0), seconds: .constant(0))
    }
 }
+

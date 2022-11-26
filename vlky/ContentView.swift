@@ -12,11 +12,14 @@ struct ContentView: View {
     @AppStorage ("coins") var numOfCoins = 0
     @AppStorage ("DoneTask") var numTaskCompleted = 0
     @AppStorage ("TotalTask") var totalTasks = 1
+    @State var hours: Int = 0
+    @State var minutes: Int = 0
+    @State var seconds: Int = 0
 //    init() {
 //            UITabBar.appearance().backgroundColor = UIColor.white
 //        }
     
-    @State var isFeedbackResponseViewPresented: Bool = false
+//    @State var isFeedbackResponseViewPresented: Bool = false
     
     var body: some View {
         TabView {
@@ -28,7 +31,7 @@ struct ContentView: View {
                 .toolbarBackground(Color.white, for: .tabBar)
                 .toolbarColorScheme(.dark, for: .tabBar)
             
-            CountupView(numOfCoins: $numOfCoins)
+            CountupView(numOfCoins: $numOfCoins, hours: $hours, minutes: $minutes, seconds: $seconds)
                 .tabItem {
                     Label("Timer", systemImage: "timer")
                 }
@@ -42,14 +45,14 @@ struct ContentView: View {
                 .toolbar(.visible, for: .tabBar)
                 .toolbarBackground(Color.white, for: .tabBar)
             
-            ProgressView(numOfCoins: $numOfCoins, numTaskCompleted: $numTaskCompleted, totalTasks: $totalTasks, todoManager: TodoManager())
+            ProgressView(numOfCoins: $numOfCoins, numTaskCompleted: $numTaskCompleted, totalTasks: $totalTasks, hours: $hours, minutes: $minutes, seconds: $seconds,todoManager: TodoManager())
                 .tabItem {
                     Label("Progress", systemImage: "chart.xyaxis.line")
                 }
                 .toolbar(.visible, for: .tabBar)
                 .toolbarBackground(Color.white, for: .tabBar)
             
-            StoreView(isFeedbackResponseViewPresented: $isFeedbackResponseViewPresented)
+            StoreView()
                 .tabItem {
                     Label("Store", systemImage: "bag")
                 }

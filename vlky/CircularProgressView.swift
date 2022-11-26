@@ -20,7 +20,7 @@ struct circular_progress_view: View {
                 .foregroundColor(.blue)
                 .opacity(0.3)
             Circle()
-                .trim(from: 0, to: progress)
+                .trim(from: 0, to: CGFloat(1 - progress))
                 .stroke(style: .init(lineWidth: 15, lineCap: .round, lineJoin: .round))
                 .foregroundColor(.red)
                 .rotationEffect(Angle(degrees: 270))

@@ -26,6 +26,7 @@ struct TodoView: View {
                             Image(systemName: todo.isCompleted ? "checkmark.circle.fill" : "circle")
                                 .onTapGesture {
                                     todo.isCompleted.toggle()
+                                    numTaskCompleted += 1
                                 }
                             Text(todo.title)
                                 .foregroundColor(todo.isCompleted ? .red : .blue )
@@ -34,8 +35,17 @@ struct TodoView: View {
                     }
                 }
                 .onDelete { indexSet in
+                    for i in indexSet.makeIterator() {
+                        let item = todoManager.todoItems[i]
+                        if item.isCompleted {
+                            numTaskCompleted -= 1
+                        }
+                    }
                     todoManager.todoItems.remove(atOffsets: indexSet)
                     totalTasks -= 1
+//                    if todo.isCompleted {
+//
+//                    }
 
                 }
                 .onMove { originalOffset, newOffset in
@@ -65,7 +75,7 @@ struct TodoView: View {
 
 struct MainTodoListView_Previews: PreviewProvider {
     static var previews: some View {
-        TodoView(numTaskCompleted: .constant(0), totalTasks: .constant(1), todoManager: TodoManager())
+        TodoView(numTaskCompleted: .constant(0), totalTasks: .constant(0), todoManager: TodoManager())
     }
 }
 
