@@ -16,6 +16,7 @@
 		7E91B3E729038804003A33E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E91B3E629038804003A33E8 /* Assets.xcassets */; };
 		7E91B3EA29038804003A33E8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7E91B3E929038804003A33E8 /* Preview Assets.xcassets */; };
 		7EA186F529248F6B0023E8E1 /* ProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EA186F429248F6B0023E8E1 /* ProgressView.swift */; };
+		9967DFA42931C8DE00B7B64F /* HalfASheet in Frameworks */ = {isa = PBXBuildFile; productRef = 9967DFA32931C8DE00B7B64F /* HalfASheet */; };
 		99A3F5782930A64200F4AC26 /* CountupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99A3F5772930A64200F4AC26 /* CountupView.swift */; };
 		D908397D291F36C700825FBD /* foodItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D908397C291F36C700825FBD /* foodItem.swift */; };
 		D9335C2E293086E10003C925 /* decorationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9335C2D293086E10003C925 /* decorationItem.swift */; };
@@ -25,7 +26,6 @@
 		D9626E04291F34F800516015 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9626E03291F34F800516015 /* Todo.swift */; };
 		D9626E06291F36EA00516015 /* TodoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9626E05291F36EA00516015 /* TodoDetailView.swift */; };
 		D9D5A358292759BF007C8B68 /* mascotItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D5A357292759BF007C8B68 /* mascotItem.swift */; };
-		D9F24011293053A000426D0F /* FeedbackResponseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9F24010293053A000426D0F /* FeedbackResponseView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,7 +48,6 @@
 		D9626E03291F34F800516015 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		D9626E05291F36EA00516015 /* TodoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailView.swift; sourceTree = "<group>"; };
 		D9D5A357292759BF007C8B68 /* mascotItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mascotItem.swift; sourceTree = "<group>"; };
-		D9F24010293053A000426D0F /* FeedbackResponseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackResponseView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9967DFA42931C8DE00B7B64F /* HalfASheet in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,7 +83,6 @@
 			children = (
 				7E91B3E229038800003A33E8 /* vlkyApp.swift */,
 				7E91B3E429038800003A33E8 /* ContentView.swift */,
-				D9F24010293053A000426D0F /* FeedbackResponseView.swift */,
 				7E7BD23D290393580002F5B9 /* HomeView.swift */,
 				99A3F5772930A64200F4AC26 /* CountupView.swift */,
 				7EA186F429248F6B0023E8E1 /* ProgressView.swift */,
@@ -128,6 +127,9 @@
 			dependencies = (
 			);
 			name = vlky;
+			packageProductDependencies = (
+				9967DFA32931C8DE00B7B64F /* HalfASheet */,
+			);
 			productName = vlky;
 			productReference = 7E91B3DF29038800003A33E8 /* vlky.app */;
 			productType = "com.apple.product-type.application";
@@ -156,6 +158,9 @@
 				Base,
 			);
 			mainGroup = 7E91B3D629038800003A33E8;
+			packageReferences = (
+				9967DFA22931C8DE00B7B64F /* XCRemoteSwiftPackageReference "HalfASheet" */,
+			);
 			productRefGroup = 7E91B3E029038800003A33E8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -185,7 +190,6 @@
 				7E91B3E529038800003A33E8 /* ContentView.swift in Sources */,
 				7E7BD23E290393580002F5B9 /* HomeView.swift in Sources */,
 				D9626E04291F34F800516015 /* Todo.swift in Sources */,
-				D9F24011293053A000426D0F /* FeedbackResponseView.swift in Sources */,
 				D9626E06291F36EA00516015 /* TodoDetailView.swift in Sources */,
 				7EA186F529248F6B0023E8E1 /* ProgressView.swift in Sources */,
 				D9D5A358292759BF007C8B68 /* mascotItem.swift in Sources */,
@@ -399,6 +403,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9967DFA22931C8DE00B7B64F /* XCRemoteSwiftPackageReference "HalfASheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/franklynw/HalfASheet";
+			requirement = {
+				branch = develop;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9967DFA32931C8DE00B7B64F /* HalfASheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9967DFA22931C8DE00B7B64F /* XCRemoteSwiftPackageReference "HalfASheet" */;
+			productName = HalfASheet;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7E91B3D729038800003A33E8 /* Project object */;
 }

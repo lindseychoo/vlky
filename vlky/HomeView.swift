@@ -48,29 +48,31 @@ struct HomeView: View {
                     .aspectRatio(contentMode: .fill)
                     .edgesIgnoringSafeArea([.top, .bottom])
                     .opacity(0.7)
+                    
                 
                 VStack {
-                    HStack {
-                        Spacer()
-                        HStack{
-                            Image(systemName: "dollarsign.circle")
-                                .font(.title)
-                            Text("\(numOfCoins)")
-                                .font(.title)
-                        }
-                        .padding(.horizontal)
-                        .padding(.horizontal)
-                      
-                    }
+//                    HStack {
+//                        Spacer()
+////                        HStack{
+////                            Image(systemName: "dollarsign.circle")
+////                                .font(.title)
+////                            Text("\(numOfCoins)")
+////                                .font(.title)
+////                        }
+////                        .padding(.horizontal)
+////                        .padding(.horizontal)
+////
+//                    }
                     Image("mascot")
                         .resizable()
                         .scaledToFit()
                         .mask(Circle())
                         .padding(.top)
-                        .padding()
+//                        .padding()
+                        .frame(width:400, height:400)
                     
-                    ZStack {
-                        VStack {
+                    
+//                        VStack {
                             Text(encouragements[currentEncouragement % encouragements.count].setup)
                             
                             Button {
@@ -84,17 +86,53 @@ struct HomeView: View {
                                     .foregroundColor(.white)
                                     .cornerRadius(10)
                             }
-                            .padding()
+//                            .padding()
                             Text(showEncouragement ? encouragements [currentEncouragement % encouragements.count].words : "")
                                 .font(.title2)
                                 .italic()
+                                .fontWeight(.medium)
                                 .padding()
                             
-                        }
-                    }
+//                        }
+                    
                 }
             }
-            .navigationTitle("Welcome")
+//            .overlay (
+//                HStack{
+//                    Image(systemName: "dollarsign.circle")
+//                        .font(.title)
+//                    Text("\(numOfCoins)")
+//                        .font(.title)
+//
+//                }
+//                    .padding(.trailing, 20)
+//                    .offset(x: 0, y : -40)
+//                , alignment: .topTrailing
+//
+//            )
+//            .navigationTitle("Welcome")
+//            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Text("Welcome")
+                        .font(.largeTitle.bold())
+                        .padding(.top)
+                }
+                
+            
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    HStack{
+                        Image(systemName: "dollarsign.circle")
+                            .font(.title)
+                        Text("\(numOfCoins)")
+                            .font(.title)
+                        
+                    }
+                    .padding(.top)
+                }
+            }
         }
         
         

@@ -1,12 +1,5 @@
-//
-//  CountupView.swift
-//  vlky
-//
-//  Created by rgs on 25/11/22.
-//
-
 import SwiftUI
-
+ 
 struct CountupView: View {
    
    @Binding var numOfCoins: Int
@@ -45,18 +38,7 @@ struct CountupView: View {
                .edgesIgnoringSafeArea(.all)
                
                VStack {
-
-                   HStack {
-                       Spacer()
-                       HStack{
-                           Image(systemName: "dollarsign.circle")
-                               .font(.title)
-                           Text("\(numOfCoins)")
-                               .font(.title)
-                       }
-                       .padding(.horizontal)
-                       
-                   }
+ 
                    Text("\(currentHour):\(currentMin):\(currentSec)")
                        .font(.largeTitle)
                        .bold()
@@ -66,6 +48,7 @@ struct CountupView: View {
                        .resizable()
                        .mask(Circle())
                        .scaledToFit()
+                       .frame(width:400, height:400)
                    
                    if timerIsPaused {
                        
@@ -118,8 +101,28 @@ struct CountupView: View {
                        
                    }
                }
-               .navigationTitle("Stop Watch")
-
+               .toolbar {
+                   
+                   ToolbarItem(placement: .navigationBarLeading) {
+                       Text("Stop Watch")
+                           .font(.largeTitle.bold())
+                           .padding(.top)
+                   }
+                   
+               
+                   
+                   ToolbarItem(placement: .navigationBarTrailing) {
+                       HStack{
+                           Image(systemName: "dollarsign.circle")
+                               .font(.title)
+                           Text("\(numOfCoins)")
+                               .font(.title)
+                           
+                       }
+                       .padding(.top)
+                   }
+               }
+ 
            }
        }
    }
@@ -167,9 +170,9 @@ struct CountupView: View {
        currentSec = 0
    }
 }
-
-
-
+ 
+ 
+ 
 struct CountupView_Previews: PreviewProvider {
     
     struct bindingholder: View {
@@ -178,7 +181,7 @@ struct CountupView_Previews: PreviewProvider {
         @State var seconds = 0
         var body: some View {
             CountupView(numOfCoins: .constant(0), hours: $hours, minutes: $minutes, seconds: $seconds)
-
+ 
         }
         
     }

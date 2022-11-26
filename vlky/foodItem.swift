@@ -10,6 +10,7 @@ import Foundation
 struct foodItem: Identifiable {
     var foodItemName: String
     var foodImageName: String
+    var foodPrice: Int
     var id = UUID()
     
 }

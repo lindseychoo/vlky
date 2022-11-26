@@ -10,6 +10,7 @@ import Foundation
 struct decorationItem: Identifiable {
     var decorationItemName: String
     var decorationImageName: String
+    var price: Int
     var id = UUID()
     
 }

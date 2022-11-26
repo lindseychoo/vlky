@@ -10,6 +10,7 @@ import Foundation
 struct mascotItem: Identifiable {
     var mascotName: String
     var mascotImageName: String
+    var mascotCost: Int
     var id = UUID()
     
 }
