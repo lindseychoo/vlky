@@ -52,7 +52,7 @@ struct ContentView: View {
                 .toolbar(.visible, for: .tabBar)
                 .toolbarBackground(Color.white, for: .tabBar)
             
-            StoreView(isFeedbackResponseViewPresented: $isFeedbackResponseViewPresented, numOfCoins: $numOfCoins)
+            StoreView(numOfCoins: $numOfCoins)
                 .tabItem {
                     Label("Store", systemImage: "bag")
                 }

@@ -80,9 +80,9 @@ struct CountupView: View {
                                    .background(Color.red)
                                    .cornerRadius(100)
                            }
-                           .padding(.bottom)
+                           .padding(.bottom, 100)
                            .padding(.horizontal)
-                           .padding(.bottom)
+                         
                            
                            Button(action:{
                                self.startTimer()
@@ -94,8 +94,7 @@ struct CountupView: View {
                                    .background(Color.blue)
                                    .cornerRadius(100)
                            }
-                           .padding(.bottom)
-                           .padding(.bottom)
+                           .padding(.bottom, 100)
                        }
                    } else {
                        Button(action:{
@@ -108,9 +107,9 @@ struct CountupView: View {
                                .background(Color.orange)
                                .cornerRadius(100)
                        }
-                       .padding(.bottom)
+                       .padding(.bottom, 100)
                        .padding(.horizontal)
-                       .padding(.bottom)
+                       
                    }
                }
                .onChange(of: currentMin) { _ in
