@@ -96,7 +96,7 @@ struct CountupView: View {
                    }
                }
                .onChange(of: currentMin) { _ in
-                   if Int(currentMin) % 1 == 0 {
+                   if Int(currentMin) % 10 == 0 {
                        numOfCoins += 1
                        
                    }
