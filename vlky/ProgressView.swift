@@ -22,8 +22,8 @@ struct ProgressView: View {
             ZStack{
                 List{
                     Text("Hours studied : \(hours)h \(minutes)min \(seconds)s")
-                    Text("To-Dos completed : \(numTaskCompleted)")
                     Text("Coins received : \(numOfCoins)")
+                    Text("Total Todos: \(todoManager.todoItems.count)")
                 }
                 
                 
@@ -40,7 +40,7 @@ struct ProgressView: View {
                             
                         
                         
-                        Text("\(todoManager.todoItems.count) todos in total, \(todoManager.todoItems.filter { !$0.isCompleted }.count ) undone todos")
+                        Text("\(todoManager.todoItems.filter { !$0.isCompleted }.count ) undone todos")
                             .padding()
                     }
                     .padding()
