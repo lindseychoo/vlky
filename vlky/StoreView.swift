@@ -10,7 +10,7 @@ struct StoreView: View {
     let columns = [GridItem(.adaptive(minimum: 120))]
     var mascots = [mascotItem(mascotName: "Christmas Valkey", mascotImageName: "christmasValkey", mascotCost: 200), mascotItem(mascotName: "Valentines Valkey", mascotImageName: "valentinesValkey", mascotCost: 200), mascotItem(mascotName: "Halloween Valkey", mascotImageName: "halloweenValkey", mascotCost: 200)]
     
-
+    
     @Binding var numOfCoins: Int
     @State private var isShowing = false
     
@@ -154,13 +154,8 @@ struct StoreView: View {
                             
                         }
                         .padding(.top)
-                        
-                        
                     }
                 }
-                
-                
-                
             }
             HalfASheet(isPresented: $isShowing) {
                 VStack{
@@ -204,7 +199,7 @@ struct StoreView: View {
                             }
                             
                         }
-
+                        
                         if selectedtype == "food" {
                             if numOfCoins >= selectedFood.foodPrice{
                                 enoughCoins = true
@@ -212,7 +207,7 @@ struct StoreView: View {
                                 enoughCoins = false
                             }
                         }
-
+                        
                         if selectedtype == "mascot" {
                             if numOfCoins >= selectedMascot.mascotCost{
                                 enoughCoins = true
@@ -230,7 +225,7 @@ struct StoreView: View {
                             .background(.blue)
                             .padding()
                     }
-
+                    
                     Button {
                         isAllAssetsViewPresented = true
                     } label: {
@@ -286,37 +281,37 @@ struct StoreView: View {
                         } label: {
                             Text("Cancel")
                         }.foregroundColor(.red)
-                       
+                        
                         
                         ;
-                    
-                    if enoughCoins == false {
-                        Button ("Ok") {
-                            return
+                        
+                        if enoughCoins == false {
+                            Button ("Ok") {
+                                return
+                            }
+                            .foregroundColor(.blue)
                         }
-                        .foregroundColor(.blue)
                     }
-                }
-            } message :{
+                } message :{
                     if enoughCoins {
                         Text("Confirm purchase?")
-                        };
-                         if enoughCoins == false {
-                           Text("You don't have enough coins.")
-                        }
+                    };
+                    if enoughCoins == false {
+                        Text("You don't have enough coins.")
+                    }
                 }
             }
         }
         
         
-    
-   
+        
+        
     }
 }
-    
-    struct StoreView_Previews: PreviewProvider {
-        static var previews: some View {
-            StoreView(numOfCoins: .constant(0), isAllAssetsViewPresented: .constant(false))
-        }
+
+struct StoreView_Previews: PreviewProvider {
+    static var previews: some View {
+        StoreView(numOfCoins: .constant(0), isAllAssetsViewPresented: .constant(false))
     }
+}
 
