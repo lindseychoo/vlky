@@ -28,9 +28,13 @@ struct TodoView: View {
                                     todo.isCompleted.toggle()
                                     numTaskCompleted += 1
                                 }
-                            Text(todo.title)
-                                .foregroundColor(todo.isCompleted ? .red : .blue )
-                                .strikethrough(todo.isCompleted)
+                            VStack (alignment: .leading){
+                                Text(todo.title)
+                                    .foregroundColor(todo.isCompleted ? .red : .blue )
+                                    .strikethrough(todo.isCompleted)
+                                Text("Due \(todo.dueDate)")
+                                    .font(.system(size: 10))
+                            }
                         }
                     }
                 }

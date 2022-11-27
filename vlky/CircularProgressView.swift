@@ -16,13 +16,13 @@ struct circular_progress_view: View {
     var body: some View {
         ZStack{
             Circle()
-                .stroke(lineWidth: 15)
+                .stroke(lineWidth: 20)
                 .foregroundColor(.blue)
                 .opacity(0.3)
             Circle()
-                .trim(from: 0, to: CGFloat(1 - progress))
-                .stroke(style: .init(lineWidth: 15, lineCap: .round, lineJoin: .round))
-                .foregroundColor(.red)
+                .trim(from: 0, to: progress)
+                .stroke(style: .init(lineWidth: 20.0, lineCap: .round, lineJoin: .round))
+                .foregroundColor(.blue)
                 .rotationEffect(Angle(degrees: 270))
         }
     }

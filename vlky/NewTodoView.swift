@@ -14,7 +14,6 @@ struct NewTodoView: View {
     @Binding var todos: [Todo]
     @Environment(\.presentationMode) var presentationMode
     
-    
     var body: some View {
         Form{
             Section{
