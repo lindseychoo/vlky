@@ -26,6 +26,7 @@
 		D9626E04291F34F800516015 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9626E03291F34F800516015 /* Todo.swift */; };
 		D9626E06291F36EA00516015 /* TodoDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9626E05291F36EA00516015 /* TodoDetailView.swift */; };
 		D9D5A358292759BF007C8B68 /* mascotItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9D5A357292759BF007C8B68 /* mascotItem.swift */; };
+		FBABC4C8293304F2003E8FD0 /* AllAssetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBABC4C7293304F2003E8FD0 /* AllAssetsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		D9626E03291F34F800516015 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		D9626E05291F36EA00516015 /* TodoDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailView.swift; sourceTree = "<group>"; };
 		D9D5A357292759BF007C8B68 /* mascotItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mascotItem.swift; sourceTree = "<group>"; };
+		FBABC4C7293304F2003E8FD0 /* AllAssetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllAssetsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 				D9626E05291F36EA00516015 /* TodoDetailView.swift */,
 				D9626E03291F34F800516015 /* Todo.swift */,
 				D9626E01291F2F4700516015 /* NewTodoView.swift */,
+				FBABC4C7293304F2003E8FD0 /* AllAssetsView.swift */,
 				7E7BD243290393D70002F5B9 /* StoreView.swift */,
 				D908397C291F36C700825FBD /* foodItem.swift */,
 				D9335C2D293086E10003C925 /* decorationItem.swift */,
@@ -200,6 +203,7 @@
 				D9335C2E293086E10003C925 /* decorationItem.swift in Sources */,
 				99A3F5782930A64200F4AC26 /* CountupView.swift in Sources */,
 				D908397D291F36C700825FBD /* foodItem.swift in Sources */,
+				FBABC4C8293304F2003E8FD0 /* AllAssetsView.swift in Sources */,
 				7E91B3E329038800003A33E8 /* vlkyApp.swift in Sources */,
 				D9626E02291F2F4700516015 /* NewTodoView.swift in Sources */,
 				D948C182292724BC00E43C43 /* TodoManager.swift in Sources */,

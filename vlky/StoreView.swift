@@ -23,6 +23,8 @@ struct StoreView: View {
     @State var enoughCoins = false
     @State var alertShown = false
     
+    @Binding var isAllAssetsViewPresented: Bool
+    
     var body: some View {
         ZStack{
             NavigationView {
@@ -227,10 +229,13 @@ struct StoreView: View {
                     }
 
                     Button {
-                        return
+                        isAllAssetsViewPresented = true
                     } label: {
                         Text("See all items")
                             .foregroundColor(.blue)
+                    }
+                    .sheet(isPresented: $isAllAssetsViewPresented) {
+                        AllAssetsView()
                     }
                 }
                 .alert(enoughCoins ?  "Are you sure you want to buy this item?" : "You can't buy this item." , isPresented: $alertShown) {
@@ -304,7 +309,7 @@ struct StoreView: View {
     
     struct StoreView_Previews: PreviewProvider {
         static var previews: some View {
-            StoreView(numOfCoins: .constant(0))
+            StoreView(numOfCoins: .constant(0), isAllAssetsViewPresented: .constant(false))
         }
     }
 

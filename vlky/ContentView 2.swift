@@ -10,17 +10,12 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var todoManager: TodoManager
     @AppStorage ("coins") var numOfCoins = 0
-    @AppStorage ("DoneTask") var numTaskCompleted = 0
-    @AppStorage ("TotalTask") var totalTasks = 1
-    @AppStorage ("assets") var isAllAssetsViewPresented = false
-    @State var hours: Int = 0
-    @State var minutes: Int = 0
-    @State var seconds: Int = 0
+    @State private var numTaskCompleted: Int = 0
 //    init() {
 //            UITabBar.appearance().backgroundColor = UIColor.white
 //        }
     
-//    @State var isFeedbackResponseViewPresented: Bool = false
+    @State var isFeedbackResponseViewPresented: Bool = false
     
     var body: some View {
         TabView {
@@ -30,29 +25,29 @@ struct ContentView: View {
                 }
                 .toolbar(.visible, for: .tabBar)
                 .toolbarBackground(Color.white, for: .tabBar)
-            
-            CountupView(numOfCoins: $numOfCoins, hours: $hours, minutes: $minutes, seconds: $seconds)
+
+            CountupView(numOfCoins: $numOfCoins)
                 .tabItem {
                     Label("Timer", systemImage: "timer")
                 }
                 .toolbar(.visible, for: .tabBar)
                 .toolbarBackground(Color.white, for: .tabBar)
             
-            TodoView(numTaskCompleted: $numTaskCompleted, totalTasks: $totalTasks, todoManager: TodoManager())
+            TodoView(todoManager: TodoManager())
                 .tabItem {
                     Label("Todo", systemImage: "list.bullet")
                 }
                 .toolbar(.visible, for: .tabBar)
                 .toolbarBackground(Color.white, for: .tabBar)
             
-            ProgressView(numOfCoins: $numOfCoins, numTaskCompleted: $numTaskCompleted, totalTasks: $totalTasks, hours: $hours, minutes: $minutes, seconds: $seconds,todoManager: TodoManager())
+            ProgressView(numOfCoins: $numOfCoins, numTaskCompleted: $numTaskCompleted)
                 .tabItem {
                     Label("Progress", systemImage: "chart.xyaxis.line")
                 }
                 .toolbar(.visible, for: .tabBar)
                 .toolbarBackground(Color.white, for: .tabBar)
             
-            StoreView(numOfCoins: $numOfCoins, isAllAssetsViewPresented: $isAllAssetsViewPresented)
+            StoreView(isFeedbackResponseViewPresented: $isFeedbackResponseViewPresented, numOfCoins: $numOfCoins)
                 .tabItem {
                     Label("Store", systemImage: "bag")
                 }
