@@ -20,6 +20,8 @@ struct StoreView: View {
     @State var selectedFood: foodItem = foodItem(foodItemName: "", foodImageName: "", foodPrice: 0)
     @State var selectedtype: String = ""
     
+    @State var enoughCoins = false
+    @State var alertShown = false
     
     var body: some View {
         ZStack{
@@ -36,7 +38,6 @@ struct StoreView: View {
                             ForEach(decorationItems) { decorationItem in
                                 Button {
                                     isShowing.toggle()
-
                                     selectedDeco = decorationItem
                                     selectedtype = "decor"
                                 } label: {
@@ -165,6 +166,8 @@ struct StoreView: View {
                         Image(selectedDeco.decorationImageName)
                             .resizable()
                             .scaledToFit()
+                        Text("Cost: \(selectedDeco.price) coins")
+                            .font(.title2)
                     }
                     if selectedtype == "food" {
                         Text(selectedFood.foodItemName)
@@ -173,7 +176,8 @@ struct StoreView: View {
                         Image(selectedFood.foodImageName)
                             .resizable()
                             .scaledToFit()
-                        
+                        Text("Cost: \(selectedFood.foodPrice) coins")
+                            .font(.title2)
                     }
                     if selectedtype == "mascot" {
                         Text(selectedMascot.mascotName)
@@ -182,22 +186,36 @@ struct StoreView: View {
                         Image(selectedMascot.mascotImageName)
                             .resizable()
                             .scaledToFit()
-                        
+                        Text("Cost: \(selectedMascot.mascotCost) coins")
+                            .font(.title2)
                     }
                     
                     Button{
                         if selectedtype == "decor" {
-                            numOfCoins -= selectedDeco.price
+                            if numOfCoins >= selectedDeco.price{
+                                enoughCoins = true
+                            } else {
+                                enoughCoins = false
+                            }
+                            
                         }
 
                         if selectedtype == "food" {
-                            numOfCoins -= selectedFood.foodPrice
+                            if numOfCoins >= selectedFood.foodPrice{
+                                enoughCoins = true
+                            } else {
+                                enoughCoins = false
+                            }
                         }
 
                         if selectedtype == "mascot" {
-                            numOfCoins -= selectedMascot.mascotCost
+                            if numOfCoins >= selectedMascot.mascotCost{
+                                enoughCoins = true
+                            } else {
+                                enoughCoins = false
+                            }
                         }
-
+                        alertShown = true
                         
                     } label: {
                         Text("Buy")
@@ -205,8 +223,75 @@ struct StoreView: View {
                             .padding()
                             .padding(.horizontal)
                             .background(.blue)
+                            .padding()
                     }
+
+                    Button {
+                        return
+                    } label: {
+                        Text("See all items")
+                            .foregroundColor(.blue)
+                    }
+                }
+                .alert(enoughCoins ?  "Are you sure you want to buy this item?" : "You can't buy this item." , isPresented: $alertShown) {
+                    if enoughCoins {
+                        Button ("Confirm") {
+                            enoughCoins = true
+                            if selectedtype == "decor" {
+                                if enoughCoins == true {
+                                    numOfCoins -= selectedDeco.price
+                                }
+                            }
+                            if selectedtype == "food" {
+                                if enoughCoins == true {
+                                    numOfCoins -= selectedFood.foodPrice
+                                }
+                            }
+                            if selectedtype == "mascot" {
+                                if enoughCoins == true {
+                                    numOfCoins -= selectedMascot.mascotCost
+                                }
+                            }
+                        }
+                        .foregroundColor(.blue)
+                        Button {
+                            enoughCoins = false
+                            if selectedtype == "decor" {
+                                if enoughCoins == true {
+                                    numOfCoins -= selectedDeco.price
+                                }
+                            }
+                            if selectedtype == "food" {
+                                if enoughCoins == true {
+                                    numOfCoins -= selectedFood.foodPrice
+                                }
+                            }
+                            if selectedtype == "mascot" {
+                                if enoughCoins == true {
+                                    numOfCoins -= selectedMascot.mascotCost
+                                }
+                            }
+                        } label: {
+                            Text("Cancel")
+                        }.foregroundColor(.red)
+                       
+                        
+                        ;
                     
+                    if enoughCoins == false {
+                        Button ("Ok") {
+                            return
+                        }
+                        .foregroundColor(.blue)
+                    }
+                }
+            } message :{
+                    if enoughCoins {
+                        Text("Confirm purchase?")
+                        };
+                         if enoughCoins == false {
+                           Text("You don't have enough coins.")
+                        }
                 }
             }
         }

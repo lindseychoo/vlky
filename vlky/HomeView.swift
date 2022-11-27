@@ -40,6 +40,7 @@ struct HomeView: View {
     @Binding var numOfCoins: Int
     
     var body: some View {
+        
         NavigationView{
             ZStack{
                 Image("HomeWallpaper")
@@ -70,7 +71,6 @@ struct HomeView: View {
                         .padding(.top)
 //                        .padding()
                         .frame(width:400, height:400)
-                    
                     
 //                        VStack {
                             Text(encouragements[currentEncouragement % encouragements.count].setup)

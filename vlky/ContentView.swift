@@ -9,7 +9,7 @@ import SwiftUI
  
 struct ContentView: View {
     @StateObject var todoManager: TodoManager
-    @AppStorage ("coins") var numOfCoins = 0
+    @AppStorage ("coins") var numOfCoins = 500
     @AppStorage ("DoneTask") var numTaskCompleted = 0
     @AppStorage ("TotalTask") var totalTasks = 1
     @State var hours: Int = 0
@@ -29,7 +29,6 @@ struct ContentView: View {
                 }
                 .toolbar(.visible, for: .tabBar)
                 .toolbarBackground(Color.white, for: .tabBar)
-                .toolbarColorScheme(.dark, for: .tabBar)
             
             CountupView(numOfCoins: $numOfCoins, hours: $hours, minutes: $minutes, seconds: $seconds)
                 .tabItem {

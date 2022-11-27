@@ -22,7 +22,7 @@ struct ProgressView: View {
             ZStack{
                 List{
                     Text("Hours studied : \(hours)h \(minutes)min \(seconds)s")
-                    Text("Coins received : \(numOfCoins)")
+                    Text("Balance : \(numOfCoins) coins")
                     Text("Total Todos: \(todoManager.todoItems.count)")
                 }
                 
