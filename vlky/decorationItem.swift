@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct decorationItem: Identifiable {
+struct decorationItem: Identifiable, Codable {
     var decorationItemName: String
     var decorationImageName: String
     var price: Int

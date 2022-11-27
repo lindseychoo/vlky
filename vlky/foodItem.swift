@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct foodItem: Identifiable {
+struct foodItem: Identifiable, Codable {
     var foodItemName: String
     var foodImageName: String
     var foodPrice: Int

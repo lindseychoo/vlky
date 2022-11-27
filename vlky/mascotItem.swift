@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct mascotItem: Identifiable {
+struct mascotItem: Identifiable, Codable {
     var mascotName: String
     var mascotImageName: String
     var mascotCost: Int

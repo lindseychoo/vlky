@@ -16,7 +16,6 @@ struct StoreView: View {
     
     @State var selectedDeco: decorationItem = decorationItem(decorationItemName: "", decorationImageName: "", price: 0)
     @State var selectedMascot: mascotItem = mascotItem(mascotName: "", mascotImageName: "", mascotCost: 0)
-
     @State var selectedFood: foodItem = foodItem(foodItemName: "", foodImageName: "", foodPrice: 0)
     @State var selectedtype: String = ""
     
@@ -24,6 +23,10 @@ struct StoreView: View {
     @State var alertShown = false
     
     @Binding var isAllAssetsViewPresented: Bool
+    
+    @State var isItemBought: Bool = false
+    
+    @StateObject var storeManager = StoreManager()
     
     var body: some View {
         ZStack{
@@ -192,7 +195,7 @@ struct StoreView: View {
                             .font(.title2)
                     }
                     
-                    Button{
+                    Button {
                         if selectedtype == "decor" {
                             if numOfCoins >= selectedDeco.price{
                                 enoughCoins = true
@@ -235,7 +238,7 @@ struct StoreView: View {
                             .foregroundColor(.blue)
                     }
                     .sheet(isPresented: $isAllAssetsViewPresented) {
-                        AllAssetsView()
+                        AllAssetsView(storeManager: storeManager)
                     }
                 }
                 .alert(enoughCoins ?  "Are you sure you want to buy this item?" : "You can't buy this item." , isPresented: $alertShown) {
@@ -245,16 +248,20 @@ struct StoreView: View {
                             if selectedtype == "decor" {
                                 if enoughCoins == true {
                                     numOfCoins -= selectedDeco.price
+                                    storeManager.storeItem.decoItem.append(selectedDeco)
                                 }
                             }
                             if selectedtype == "food" {
                                 if enoughCoins == true {
                                     numOfCoins -= selectedFood.foodPrice
+                                    storeManager.storeItem.foodItem.append(selectedFood)
                                 }
                             }
                             if selectedtype == "mascot" {
                                 if enoughCoins == true {
                                     numOfCoins -= selectedMascot.mascotCost
+                                    storeManager.storeItem.mascotItem.append(selectedMascot)
+                                    
                                 }
                             }
                         }
