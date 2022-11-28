@@ -79,7 +79,7 @@ struct HomeView: View {
                                 showEncouragement = true
                                 currentEncouragement += 1
                             } label: {
-                                Text (" Valkey ")
+                                Text (" Encourage Me! ")
                                     .font(.title)
                                     .padding()
                                     .background(.blue)
