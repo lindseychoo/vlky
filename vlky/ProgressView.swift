@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct ProgressView: View {
-    
     @Binding var numOfCoins: Int
     @Binding var numTaskCompleted: Int
     @Binding var totalTasks: Int
     @Binding var hours: Int
     @Binding var minutes: Int
     @Binding var seconds: Int
-    @ObservedObject var todoManager: TodoManager
+    @StateObject var todoManager: TodoManager
     
     var body: some View {
         NavigationView{
@@ -23,7 +22,7 @@ struct ProgressView: View {
                 List{
                     Text("Hours studied : \(hours)h \(minutes)min \(seconds)s")
                     Text("Balance : \(numOfCoins) coins")
-                    Text("Total Todos: \(todoManager.todoItems.count)")
+                    Text("Total Todos: \(totalTasks)")
                 }
                 
                 
@@ -35,12 +34,10 @@ struct ProgressView: View {
                         Text("Todos done")
                             .font(.title)
                             .padding()
-                        circular_progress_view(numTaskCompleted: $numTaskCompleted, progress: CGFloat( Float(numTaskCompleted) / (totalTasks == 0 ? 1 : Float(totalTasks))))
+                        circular_progress_view(numTaskCompleted: $numTaskCompleted, progress: CGFloat(totalTasks == 0 ? 1.0 : Float(numTaskCompleted) / Float(totalTasks)))
                             .frame(width: 250, height: 250)
-                            
                         
-                        
-                        Text("\(todoManager.todoItems.filter { !$0.isCompleted }.count ) undone todos")
+                        Text("\(totalTasks-numTaskCompleted) undone todos")
                             .padding()
                     }
                     .padding()
