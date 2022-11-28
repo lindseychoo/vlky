@@ -15,7 +15,7 @@ struct TodoDetailView: View {
         Form {
             TextField("Title of todo", text: $todo.title)
             TextField("Due Date", text: $todo.dueDate)
-            TextField("Notes", text: $todo.description)
+            TextField("Notes (Optional)", text: $todo.description)
             
             //how to we make the notes text field larger? or is the only way to make a new expanded sheet
             

@@ -19,7 +19,7 @@ struct NewTodoView: View {
             Section{
                 TextField("Task Name", text: $todoName)
                 TextField("Due Date", text: $todoDate)
-                TextField("Description", text: $todoDesc)
+                TextField("Description (Optional)", text: $todoDesc)
                 Button{
                     print("hi")
                     todos.append(Todo(title: todoName, description: todoDesc, dueDate: todoDate))
