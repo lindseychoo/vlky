@@ -9,7 +9,7 @@ import SwiftUI
  
 struct ContentView: View {
     @StateObject var todoManager: TodoManager
-    @AppStorage ("coins") var numOfCoins = 0
+    @AppStorage ("coins") var numOfCoins = 10
     @AppStorage ("DoneTask") var numTaskCompleted = 0
     @AppStorage ("TotalTask") var totalTasks = 1
     @AppStorage ("assets") var isAllAssetsViewPresented = false
