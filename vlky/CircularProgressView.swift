@@ -10,7 +10,7 @@ import SwiftUI
 struct circular_progress_view: View {
     
     @Binding var numTaskCompleted: Int
-   var progress: CGFloat
+    var progress: CGFloat
     
     
     var body: some View {

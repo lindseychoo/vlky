@@ -22,4 +22,3 @@ struct vlkyvar: View {
         Image("TimerSecondWallpaper")
     }
 }
-

@@ -26,7 +26,12 @@ struct TodoView: View {
                             Image(systemName: todo.isCompleted ? "checkmark.circle.fill" : "circle")
                                 .onTapGesture {
                                     todo.isCompleted.toggle()
-                                    numTaskCompleted += 1
+                                    if todo.isCompleted {
+                                        numTaskCompleted += 1
+                                    } else {
+                                        numTaskCompleted -= 1
+                                    }
+                                    todoManager.reload.toggle()
                                 }
                             VStack (alignment: .leading){
                                 Text(todo.title)

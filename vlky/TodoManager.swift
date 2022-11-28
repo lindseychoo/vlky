@@ -7,6 +7,7 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 class TodoManager: ObservableObject {
     @Published var numTaskCompleted: [TodoView] = []{
@@ -19,18 +20,19 @@ class TodoManager: ObservableObject {
             save()
         }
     }
-    
-    var undoneTodos: [Todo] {
-        todoItems.filter { $0.isCompleted == false}
-    }
-    
+    @Published var reload: Bool
+    @Published var undoneTodos: [Todo] = []
+    private var subscriptions = Set<AnyCancellable>()
     let sampleTodoItems: [Todo] =  [
         Todo(title: "Add your first todo!", description: "Click on the Plus Sign on the top right hand corner of the screen to add a new todo", dueDate: "Add your first due date!")
         
     ]
     
     init() {
+        self.reload = false
         load()
+        let calculateTodos: (([Todo]) -> [Todo]) = { _ in self.todoItems.filter { $0.isCompleted == false } }
+        self.$todoItems.map(calculateTodos).assign(to: \.undoneTodos, on: self).store(in: &subscriptions)
     }
     
     func getArchiveURL() -> URL {
@@ -61,6 +63,6 @@ class TodoManager: ObservableObject {
         }
         
         todoItems = finalTodoItems
-    
+        undoneTodos = todoItems.filter { $0.isCompleted == false }
     }
 }
