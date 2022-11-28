@@ -42,9 +42,11 @@ struct StoreView: View {
                             Spacer().frame(width: 5)
                             ForEach(decorationItems) { decorationItem in
                                 Button {
+                                    Timer.scheduledTimer(withTimeInterval: 0.1, repeats: false) { _ in
+                                        selectedtype = "decor"
+                                    }
                                     isShowing.toggle()
                                     selectedDeco = decorationItem
-                                    selectedtype = "decor"
                                 } label: {
                                     VStack {
                                         Image(decorationItem.decorationImageName)
@@ -157,7 +159,7 @@ struct StoreView: View {
                     }
                 }
             }
-            HalfASheet(isPresented: $isShowing) {
+            .sheet(isPresented: $isShowing) {
                 VStack{
                     if selectedtype == "decor" {
                         Text(selectedDeco.decorationItemName)
@@ -300,11 +302,10 @@ struct StoreView: View {
                         Text("You don't have enough coins.")
                     }
                 }
+                .padding(.top)
+                .presentationDetents([.medium, .large])
             }
         }
-        
-        
-        
         
     }
 }
